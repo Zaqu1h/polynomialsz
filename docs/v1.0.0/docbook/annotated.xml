@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="en-US">
+<title>Data Structures</title>
+Here are the data structures with brief descriptions:<link linkend="_structpolynomial">polynomial</link>
+<para>Represents a polynomial as an array of terms </para>
+<link linkend="_structspolynomial">spolynomial</link><link linkend="_structsterm">sterm</link><link linkend="_structterm">term</link>
+<para>Represents a single term in a polynomial </para>
+</section>

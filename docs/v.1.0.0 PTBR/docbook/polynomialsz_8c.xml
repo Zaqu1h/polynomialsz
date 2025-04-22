@@ -1,0 +1,1311 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_polynomialsz_8c" xml:lang="pt-BR">
+<title>Referência do Arquivo C:/Users/isaqu/Desktop/Outroam/UESC/PID/Algoritmo/v1.0.0 PTBR/polynomialsz.c</title>
+<indexterm><primary>C:/Users/isaqu/Desktop/Outroam/UESC/PID/Algoritmo/v1.0.0 PTBR/polynomialsz.c</primary></indexterm>
+<para>
+
+<para>Arquivo fonte para as funcionalidades de fatoração polinomial. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;polynomialsz.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Funções    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structterm">term</link> <link linkend="_polynomialsz_8c_1aa0f3539fed923511c6386c9bcd4214aa">setTerms</link> (int coef, int exp)</para>
+
+<para>Cria e define o coeficiente e o expoente de um termo polinomial. </para>
+</listitem>
+            <listitem><para>double <link linkend="_polynomialsz_8c_1a7f7ab4213c2175b0f3f4e7c7a0ede0d4">nrt</link> (double rad, int ind)</para>
+
+<para>Retorna a base de uma potência com expoente igual a <computeroutput>ind</computeroutput>, que é igual a <computeroutput>rad</computeroutput>. </para>
+</listitem>
+            <listitem><para>int <link linkend="_polynomialsz_8c_1a381995fe1afa062092b685cd4702d1aa">indOfRoot</link> (int rad, double rt)</para>
+
+<para>Retorna o expoente (índice) de uma potência que tem base <computeroutput>rt</computeroutput> e resultado <computeroutput>rad</computeroutput>. </para>
+</listitem>
+            <listitem><para><link linkend="_structpolynomial">polynomial</link> <link linkend="_polynomialsz_8c_1a69c9ea71eed7589ce8e9979b68bbea6b">pCreate</link> (int num_of_terms)</para>
+
+<para>Cria e retorna um polinômio com um número especificado de termos. </para>
+</listitem>
+            <listitem><para>void <link linkend="_polynomialsz_8c_1acbe8f5ae59186f01c26cd18d4f801e18">pPrint</link> (<link linkend="_structpolynomial">polynomial</link> p)</para>
+</listitem>
+            <listitem><para>int <link linkend="_polynomialsz_8c_1af23d9d3b957105f099417c29e1404852">gcd</link> (int a, int b)</para>
+
+<para>Calcula o maior divisor comum (MDC) de dois inteiros usando o algoritmo de Euclides. </para>
+</listitem>
+            <listitem><para>int <link linkend="_polynomialsz_8c_1a03175512d4c4876cf35791cdfa0301ff">isPrime</link> (int num)</para>
+
+<para>Retorna o n-ésimo número primo, onde n é menor ou igual a 41. </para>
+</listitem>
+            <listitem><para>int <link linkend="_polynomialsz_8c_1a21b831d691437b7237fa7e1fc813654e">eisenstein</link> (<link linkend="_structpolynomial">polynomial</link> x, double p)</para>
+
+<para>Aplica o critério de Eisenstein para determinar se um polinômio é irredutível. </para>
+</listitem>
+            <listitem><para>void <link linkend="_polynomialsz_8c_1ac92b3863e640384c7e86b27afe9ecff2">complexp</link> (<link linkend="_structpolynomial">polynomial</link> p)</para>
+
+<para>Imprime todas as raízes complexas não reais de um polinômio, assumindo módulo unitário. </para>
+</listitem>
+            <listitem><para>char * <link linkend="_polynomialsz_8c_1a49c6f9f297f6b78563fc144ba086b9f1">bhaskaraSimplify</link> (int aexp, int den, int b, double delta, double *rootsPair)</para>
+
+<para>Gera uma representação simbólica fatorada das raízes de um polinômio do segundo grau. </para>
+</listitem>
+            <listitem><para>void <link linkend="_polynomialsz_8c_1a797fa934e9e23fd2a700827339a18661">bhaskara</link> (<link linkend="_structpolynomial">polynomial</link> p)</para>
+
+<para>Calcula e imprime a fatoração de um polinômio de segundo grau usando a fórmula de Bhaskara (quadrática). </para>
+</listitem>
+            <listitem><para>void <link linkend="_polynomialsz_8c_1a2e6fab028468e38950e5ec59a67e4fe2">powerDiffFactoring</link> (<link linkend="_structpolynomial">polynomial</link> p)</para>
+
+<para>Aplica a identidade da soma ou diferença de potências (a^n ± b^n). Para n ímpar, tanto soma quanto diferença podem ser fatoradas. Para n par, apenas a diferença pode ser fatorada. </para>
+</listitem>
+            <listitem><para>void <link linkend="_polynomialsz_8c_1ac7fcd11482732d3fcaeaf1c6688a5f96">briot_ruffini</link> (<link linkend="_structpolynomial">polynomial</link> p)</para>
+
+<para>Tenta fatorar um polinômio usando o Teorema das Raízes Racionais e divisão sintética. </para>
+</listitem>
+            <listitem><para>void <link linkend="_polynomialsz_8c_1a50bc1f5d462251a36e76b04ed74d5447">printFac</link> (<link linkend="_structpolynomial">polynomial</link> p)</para>
+
+<para>Imprime a fatoração de um polinômio ou exibe a mensagem apropriada com base no tipo de fatoração que pode ser realizada nele. </para>
+</listitem>
+            <listitem><para>void <link linkend="_polynomialsz_8c_1a7a4c9c50182fde091bea11c26712e41c">pFree</link> (<link linkend="_structpolynomial">polynomial</link> p)</para>
+
+<para>Ao contrário de <computeroutput><link linkend="_polynomialsz_8h_1a50bc1f5d462251a36e76b04ed74d5447">printFac()</link></computeroutput>, esta função também desaloca a memória dos termos de <computeroutput>p</computeroutput> usando <computeroutput>free(p.terms)</computeroutput>. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variáveis    </title>
+        <itemizedlist>
+            <listitem><para>char <link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link> = &apos;x&apos;</para>
+
+<para>Variável simbólica para representar raízes e expressões polinomiais. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Descrição detalhada</title>
+
+<para>Arquivo fonte para as funcionalidades de fatoração polinomial. </para>
+
+<para>O arquivo implementa a lógica para a fatoração de polinômios, incluindo algoritmos como Briot-Ruffini, o Critério de Eisenstein e fatoração por diferença de potência. Utiliza estrutura de dados e declarações definidas no arquivo header correspondente (<link linkend="_polynomialsz_8h">polynomialsz.h</link>). </para>
+</section>
+<section>
+<title>Funções</title>
+<anchor xml:id="_polynomialsz_8c_1a797fa934e9e23fd2a700827339a18661"/><section>
+    <title>bhaskara()</title>
+<indexterm><primary>bhaskara</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>bhaskara</secondary></indexterm>
+<para><computeroutput>void bhaskara (<link linkend="_structpolynomial">polynomial</link> p)</computeroutput></para><para>
+
+<para>Calcula e imprime a fatoração de um polinômio de segundo grau usando a fórmula de Bhaskara (quadrática). </para>
+</para>
+
+<para>Esta função simplifica os resultados dependendo do valor de <computeroutput>b</computeroutput> e de <computeroutput>delta</computeroutput>.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>p</entry><entry>
+<para>Um polinômio de grau 2 ou 4 com três termos na ordem decrescente de expoente. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+352 
+353 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;aexp&#32;=&#32;p.terms[0].exponent;
+354 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;a&#32;=&#32;p.terms[0].coefficient;
+355 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;b&#32;=&#32;p.terms[1].coefficient;
+356 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;c&#32;=&#32;p.terms[2].coefficient;
+357 
+358 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;den&#32;=&#32;2&#32;*&#32;a;
+359 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;delta&#32;=&#32;pow(b,&#32;2)&#32;-&#32;(4&#32;*&#32;a&#32;*&#32;c);
+360 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;rootsPair[2]&#32;=&#32;{0,&#32;0};
+361 
+362 &#32;&#32;&#32;&#32;rootsPair[0]&#32;=&#32;(-b&#32;+&#32;(sqrt((fabs)(delta))))&#32;/&#32;den;
+363 &#32;&#32;&#32;&#32;rootsPair[1]&#32;=&#32;(-b&#32;-&#32;(sqrt((fabs)(delta))))&#32;/&#32;den;
+364 
+365 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;asbRoot1&#32;=&#32;(int)(fabs)(rootsPair[0]);
+366 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;asbRoot2&#32;=&#32;(int)(fabs)(rootsPair[1]);
+367 
+368 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;bSimplify&#32;=&#32;<link linkend="_polynomialsz_8c_1a49c6f9f297f6b78563fc144ba086b9f1">bhaskaraSimplify</link>(aexp,&#32;den,&#32;b,&#32;delta,&#32;rootsPair);
+369 
+370 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;negRoot&#32;=&#32;(rootsPair[0]&#32;&lt;=&#32;0&#32;||&#32;rootsPair[1]&#32;&lt;=&#32;0&#32;||&#32;(aexp&#32;==&#32;4&#32;&amp;&amp;&#32;delta&#32;&gt;=&#32;0))&#32;?&#32;1&#32;:&#32;-1;
+371 
+372 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(negRoot&#32;==&#32;1){
+373 
+374 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%s&quot;</emphasis>,&#32;bSimplify);
+375 &#32;&#32;&#32;&#32;}
+376 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>(aexp&#32;==&#32;4){
+377 
+378 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c%c%i)(%c%c%i)(%c%c%i)(%c%c%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;(rootsPair[0]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;asbRoot1,
+379 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;(rootsPair[0]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;asbRoot1,
+380 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;(rootsPair[1]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;asbRoot2,
+381 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;(rootsPair[1]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;asbRoot2);
+382 &#32;&#32;&#32;&#32;}
+383 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+384 
+385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c%c%i)(%c%c%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;(rootsPair[0]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;asbRoot1,
+386 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;(rootsPair[1]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;asbRoot2);
+387 &#32;&#32;&#32;&#32;}
+388 
+389 &#32;&#32;&#32;&#32;free(bSimplify);
+390 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1a49c6f9f297f6b78563fc144ba086b9f1"/><section>
+    <title>bhaskaraSimplify()</title>
+<indexterm><primary>bhaskaraSimplify</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>bhaskaraSimplify</secondary></indexterm>
+<para><computeroutput>char * bhaskaraSimplify (int aexp, int den, int b, double delta, double * rootsPair)</computeroutput></para><para>
+
+<para>Gera uma representação simbólica fatorada das raízes de um polinômio do segundo grau. </para>
+</para>
+
+<para>Esta função recebe os coeficientes e o discriminante de uma equação quadrática e retorna uma string alocada dinamicamente contendo a fatoração simbólica das raízes. Ela trata diversos casos:<itemizedlist>
+<listitem>
+<para>Raízes reais e racionais</para>
+</listitem><listitem>
+<para>Raízes irracionais (com radicais)</para>
+</listitem><listitem>
+<para>Raízes complexas conjugadas</para>
+</listitem><listitem>
+<para>Raízes puramente imaginárias</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Também é compatível com casos onde o polinômio representa um quadrado de binômio, útil em fatorações de polinômios de grau 4.</para>
+
+<para><warning><title>Aviso</title>
+
+<para>A string retornada é alocada dinamicamente com <computeroutput>malloc()</computeroutput> e deve ser liberada manualmente com <computeroutput>free()</computeroutput> para evitar vazamento de memória.</para>
+</warning>
+
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>aexp</entry><entry>
+<para>Expoente do termo principal do polinômio (normalmente 2 ou 4). </para>
+</entry>
+                            </row>
+                            <row>
+<entry>den</entry><entry>
+<para>Denominador utilizado na fórmula de Bhaskara (geralmente 2 * a). </para>
+</entry>
+                            </row>
+                            <row>
+<entry>b</entry><entry>
+<para>Coeficiente do termo linear do polinômio. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>delta</entry><entry>
+<para>Discriminante da equação quadrática (b² - 4ac). </para>
+</entry>
+                            </row>
+                            <row>
+<entry>rootsPair</entry><entry>
+<para>Vetor de dois doubles contendo as raízes numéricas aproximadas (usado apenas para formatação).</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Retorna</title>
+
+<para>Ponteiro para uma string alocada dinamicamente contendo a fatoração simbólica. A responsabilidade de liberar a memória é do chamador da função. </para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+240 
+241 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;absDelta&#32;=&#32;(int)(fabs)(delta);
+242 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;bSimplify&#32;=&#32;malloc(<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keywordtype">char</emphasis>)&#32;*&#32;60);
+243 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;powerRoot[3]&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+244 
+245 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(aexp&#32;==&#32;4){
+246 
+247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(powerRoot,&#32;3,&#32;<emphasis role="stringliteral">&quot;^2&quot;</emphasis>);
+248 &#32;&#32;&#32;&#32;}
+249 
+250 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)&#32;*&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)&#32;==&#32;absDelta){
+251 
+252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(delta&#32;&gt;=&#32;0){
+253 
+254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((-b&#32;+&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta))&#32;%&#32;den&#32;==&#32;0){
+255 
+256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;%i)(%c%s&#32;%c&#32;%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;(-b&#32;+&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta))/den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;(-b&#32;+&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta))/den);
+259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>((-b&#32;+&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta))&#32;%&#32;den&#32;!=&#32;0&#32;&amp;&amp;&#32;b&#32;!=&#32;0){
+261 
+262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;(%i&#32;+&#32;%i)/%i)(%c%s&#32;%c&#32;(%i&#32;-&#32;%i)/%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;-b,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta),&#32;den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;-b,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta),&#32;den);
+265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+267 
+268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;(%i/%i))(%c%s&#32;%c&#32;(%i/i))&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta),&#32;den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta),&#32;den);
+271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(-b&#32;%&#32;den&#32;==&#32;0&#32;&amp;&amp;&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)&#32;%&#32;den&#32;==&#32;0&#32;&amp;&amp;&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)&#32;/&#32;den&#32;!=&#32;1&#32;&amp;&amp;&#32;b&#32;!=&#32;0){
+275 
+276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;(%i&#32;+&#32;i%i))(%c%s&#32;%c&#32;(%i&#32;-&#32;i%i))&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;-b/den,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)/den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;-b/den,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)/den);
+279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>(-b&#32;%&#32;den&#32;==&#32;0&#32;&amp;&amp;&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)&#32;%&#32;den&#32;==&#32;0&#32;&amp;&amp;&#32;b&#32;!=&#32;0){
+281 
+282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;(%i&#32;+&#32;i))(%c%s&#32;%c&#32;(%i&#32;-&#32;i))&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;-b/den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;-b/den);
+285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+286 
+287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>(-b&#32;%&#32;den&#32;!=&#32;0&#32;||&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)&#32;%&#32;den&#32;!=&#32;0&#32;&amp;&amp;&#32;b&#32;!=&#32;0){
+288 
+289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;(%i&#32;+&#32;i%i)/%i)(%c%s&#32;%c&#32;(%i&#32;-&#32;i%i)/%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;-b,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta),&#32;den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;-b,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta),&#32;den);
+292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>((<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)&#32;%&#32;den&#32;==&#32;0&#32;&amp;&amp;&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)&#32;/&#32;den&#32;!=&#32;1&#32;&amp;&amp;&#32;b&#32;==&#32;0){
+294 
+295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;i%i)(%c%s&#32;%c&#32;i%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+296 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)/den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+297 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)/den);
+298 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>((<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta)&#32;%&#32;den&#32;==&#32;0&#32;&amp;&amp;&#32;b&#32;==&#32;0){
+300 
+301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;i)(%c%s&#32;%c&#32;i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>);
+304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+306 
+307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;i%i/%i)(%c%s&#32;%c&#32;i%i/%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta),&#32;den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(-b&#32;+&#32;absDelta&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)sqrt(absDelta),&#32;den);
+310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+312 &#32;&#32;&#32;&#32;}
+313 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(delta&#32;&gt;=&#32;0){
+315 
+316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(b&#32;!=&#32;0){
+317 
+318 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;((%i&#32;+&#32;%i^{1/2})/%i))&#32;(%c%s&#32;%c&#32;((%i&#32;-&#32;%i^{1/2})/%i))&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+319 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(rootsPair[0]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;-b,&#32;absDelta,&#32;den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(rootsPair[1]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;-b,&#32;absDelta,&#32;den);
+321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+323 
+324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;(%i^{1/2})/%i)&#32;(%c%s&#32;%c&#32;(%i^{1/2})/%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+325 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(rootsPair[0]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;absDelta,&#32;den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+326 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(rootsPair[1]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;absDelta,&#32;den);
+327 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+328 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+329 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+330 
+331 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(b&#32;!=&#32;0){
+332 
+333 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;((%i&#32;+&#32;i%i^{1/2})/%i))&#32;(%c%s&#32;%c&#32;((%i&#32;-&#32;i%i^{1/2})/%i))&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+334 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(rootsPair[0]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;-b,&#32;absDelta,&#32;den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+335 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(rootsPair[1]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;-b,&#32;absDelta,&#32;den);
+336 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+337 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+338 
+339 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(bSimplify,&#32;60,&#32;<emphasis role="stringliteral">&quot;(%c%s&#32;%c&#32;(i%i^{1/2})/%i)&#32;(%c%s&#32;%c&#32;(i%i^{1/2})/%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(rootsPair[0]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;absDelta,&#32;den,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;powerRoot,
+341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(rootsPair[1]&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;absDelta,&#32;den);
+342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+344 &#32;&#32;&#32;&#32;}
+345 
+346 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;bSimplify;
+347 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1ac7fcd11482732d3fcaeaf1c6688a5f96"/><section>
+    <title>briot_ruffini()</title>
+<indexterm><primary>briot_ruffini</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>briot_ruffini</secondary></indexterm>
+<para><computeroutput>void briot_ruffini (<link linkend="_structpolynomial">polynomial</link> p)</computeroutput></para><para>
+
+<para>Tenta fatorar um polinômio usando o Teorema das Raízes Racionais e divisão sintética. </para>
+</para>
+
+<para>Aplica o método de Briot–Ruffini (divisão sintética) para encontrar raízes inteiras e racionais de um polinômio, assim como raízes aproximadas de radicais quando possível. Exibe os termos fatorados lineares e radicais.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>p</entry><entry>
+<para>O polinômio a ser fatorado. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">433 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+434 
+435 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max_num&#32;=&#32;0,&#32;start&#32;=&#32;1,&#32;i&#32;=&#32;1,&#32;r&#32;=&#32;1,&#32;rq&#32;=&#32;0,&#32;end_int&#32;=&#32;0,&#32;rnum&#32;=&#32;1,&#32;rI&#32;=&#32;1,&#32;cont&#32;=&#32;1;
+436 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;ind&#32;=&#32;1,&#32;startf&#32;=&#32;1;
+437 
+438 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;*root&#32;=&#32;(<emphasis role="keywordtype">int</emphasis>*)calloc(p.num_of_terms,&#32;<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keywordtype">int</emphasis>));
+439 
+440 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;1;&#32;j&#32;&lt;&#32;p.num_of_terms;&#32;j++)&#32;{
+441 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;max_num&#32;=&#32;(p.terms[j].coefficient&#32;&gt;&#32;max_num)&#32;?&#32;p.terms[j].coefficient&#32;:&#32;max_num;
+442 &#32;&#32;&#32;&#32;}
+443 
+444 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(i&#32;!=&#32;max_num)&#32;{
+445 
+446 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;start&#32;=&#32;i&#32;*&#32;1&#32;+&#32;p.terms[1].coefficient;
+447 
+448 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;k&#32;=&#32;2;&#32;k&#32;&lt;&#32;p.num_of_terms;&#32;k++)&#32;{
+449 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;start&#32;=&#32;i&#32;*&#32;start&#32;+&#32;p.terms[k].coefficient;
+450 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+451 
+452 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(start&#32;==&#32;0)&#32;{
+453 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;root[r]&#32;=&#32;i;
+454 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;r++;
+455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+456 
+457 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;i++;
+458 &#32;&#32;&#32;&#32;}
+459 
+460 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(r&#32;&lt;&#32;p.num_of_terms)&#32;{
+461 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;i&#32;=&#32;-max_num;
+462 
+463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(i&#32;!=&#32;0)&#32;{
+464 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;start&#32;=&#32;i&#32;*&#32;1&#32;+&#32;p.terms[1].coefficient;
+465 
+466 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;k&#32;=&#32;2;&#32;k&#32;&lt;&#32;p.num_of_terms;&#32;k++)&#32;{
+467 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;start&#32;=&#32;i&#32;*&#32;start&#32;+&#32;p.terms[k].coefficient;
+468 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+469 
+470 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(start&#32;==&#32;0)&#32;{
+471 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;root[r]&#32;=&#32;i;
+472 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;r++;
+473 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+474 
+475 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;i++;
+476 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+477 &#32;&#32;&#32;&#32;}
+478 
+479 &#32;&#32;&#32;&#32;end_int&#32;=&#32;r;
+480 
+481 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(r&#32;&lt;&#32;p.num_of_terms)&#32;{
+482 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rq&#32;=&#32;2;
+483 
+484 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(rq&#32;&lt;&#32;max_num&#32;&amp;&amp;&#32;r&#32;&lt;&#32;p.num_of_terms)&#32;{
+485 
+486 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ind&#32;=&#32;sqrt(rq);
+487 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;startf&#32;=&#32;ind&#32;+&#32;p.terms[1].coefficient;
+488 
+489 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;k&#32;=&#32;2;&#32;k&#32;&lt;=&#32;p.num_of_terms;&#32;k++)&#32;{
+490 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;startf&#32;=&#32;ind&#32;*&#32;startf&#32;+&#32;p.terms[k].coefficient;
+491 
+492 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((<emphasis role="keywordtype">int</emphasis>)(startf&#32;*&#32;1000)&#32;==&#32;0)&#32;{
+493 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;root[r]&#32;=&#32;rq;
+494 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;root[r&#32;+&#32;1]&#32;=&#32;rq;
+495 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;r&#32;+=&#32;2;
+496 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+497 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+498 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+499 
+500 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rq++;
+501 
+502 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;rr&#32;=&#32;0;&#32;rr&#32;&lt;&#32;end_int;&#32;rr++)&#32;{
+503 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(root[rr]&#32;==&#32;sqrt(rq))&#32;{
+504 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rq++;
+505 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+506 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+507 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+508 &#32;&#32;&#32;&#32;}
+509 
+510 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pr&#32;=&#32;0;
+511 
+512 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(r&#32;!=&#32;p.num_of_terms-1)&#32;{
+513 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;l&#32;=&#32;1;&#32;root[l]&#32;!=&#32;0&#32;&amp;&amp;&#32;l&#32;&lt;&#32;p.num_of_terms;&#32;l++)&#32;{
+514 
+515 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(l&#32;&lt;&#32;end_int)&#32;{
+516 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c%c%d)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;((root[l]&#32;&gt;&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>),&#32;abs(root[l]));
+517 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pr++;
+518 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+519 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(l&#32;&gt;=&#32;end_int&#32;&amp;&amp;&#32;p.terms[0].exponent&#32;!=&#32;3)&#32;{
+520 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c&#32;+&#32;%d^{1/2})(%c&#32;-&#32;%d^{1/2})&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;root[l],&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;root[l]);
+521 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;l++;
+522 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pr++;
+523 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+524 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(rq&#32;&gt;&#32;0&#32;&amp;&amp;&#32;p.terms[0].exponent&#32;%&#32;2&#32;!=&#32;0&#32;&amp;&amp;&#32;p.terms[0].exponent&#32;&lt;&#32;6&#32;&amp;&amp;&#32;(p.terms[p.num_of_terms&#32;-&#32;1].coefficient&#32;&gt;=&#32;0)){
+525 
+526 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;px&#32;=&#32;(p.terms[0].exponent&#32;==&#32;3)&#32;?&#32;p.terms[1].coefficient&#32;+&#32;root[1]&#32;:&#32;p.terms[3].coefficient&#32;/&#32;-root[1];
+527 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qx&#32;=&#32;(p.terms[0].exponent&#32;==&#32;3)&#32;?&#32;p.terms[2].coefficient&#32;+&#32;px*root[1]&#32;:&#32;p.terms[5].coefficient&#32;/&#32;-root[1];
+528 
+529 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structpolynomial">polynomial</link>&#32;aux&#32;=&#32;<link linkend="_polynomialsz_8c_1a69c9ea71eed7589ce8e9979b68bbea6b">pCreate</link>(3);
+530 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;aux.terms[0]&#32;=&#32;<link linkend="_polynomialsz_8c_1aa0f3539fed923511c6386c9bcd4214aa">setTerms</link>(1,&#32;p.terms[0].exponent&#32;-&#32;1);
+531 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;aux.terms[1]&#32;=&#32;<link linkend="_polynomialsz_8c_1aa0f3539fed923511c6386c9bcd4214aa">setTerms</link>(px,&#32;p.terms[0].exponent&#32;/&#32;2);
+532 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;aux.terms[2]&#32;=&#32;<link linkend="_polynomialsz_8c_1aa0f3539fed923511c6386c9bcd4214aa">setTerms</link>(qx,&#32;0);
+533 
+534 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1a797fa934e9e23fd2a700827339a18661">bhaskara</link>(aux);
+535 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n\n&quot;</emphasis>);
+536 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+537 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+538 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+539 &#32;&#32;&#32;&#32;}
+540 
+541 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(pr&#32;==&#32;0){
+542 
+543 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;setlocale(LC_ALL,&#32;<emphasis role="stringliteral">&quot;Portuguese&quot;</emphasis>);
+544 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Não&#32;é&#32;possível&#32;realizar&#32;uma&#32;fatoração&#32;não-imaginária&#32;e/ou&#32;que&#32;não&#32;existem&#32;raízes&#32;representáveis&#32;por&#32;radicais&#32;ou&#32;inteiros&#32;para&#32;o&#32;polinômio\n\n&quot;</emphasis>);
+545 
+546 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free(root);
+547 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+548 &#32;&#32;&#32;&#32;}
+549 
+550 &#32;&#32;&#32;&#32;free(root);
+551 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+552 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1ac92b3863e640384c7e86b27afe9ecff2"/><section>
+    <title>complexp()</title>
+<indexterm><primary>complexp</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>complexp</secondary></indexterm>
+<para><computeroutput>void complexp (<link linkend="_structpolynomial">polynomial</link> p)</computeroutput></para><para>
+
+<para>Imprime todas as raízes complexas não reais de um polinômio, assumindo módulo unitário. </para>
+</para>
+
+<para>Esta função assume que o polinômio tem apenas raízes complexas localizadas no círculo unitário e calcula as raízes complexas na forma exponencial e^{iθ} e e^{-iθ}, onde θ é um ângulo em radianos representado como múltiplo de π. Ela lida com os casos quando o polinômio é monômio ou não e ajusta o número de raízes impressas conforme necessário.</para>
+
+<para>As raízes são exibidas usando a fórmula de Euler e mostradas como expressões fatoradas.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>p</entry><entry>
+<para>O polinômio do qual as raízes complexas serão extraídas e impressas. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+151 
+152 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;angle&#32;=&#32;0;
+153 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numerator&#32;=&#32;0;
+154 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;den&#32;=&#32;1;
+155 
+156 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;l&#32;=&#32;0;&#32;l&#32;&lt;&#32;p.num_of_terms;&#32;l++){
+157 
+158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;den&#32;*=&#32;p.terms[l].coefficient;
+159 &#32;&#32;&#32;&#32;}
+160 
+161 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;degree&#32;=&#32;(den&#32;==&#32;1)&#32;?&#32;p.num_of_terms&#32;:&#32;p.terms[0].exponent;
+162 
+163 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;total_roots&#32;=&#32;(degree&#32;%&#32;2&#32;==&#32;0)&#32;?&#32;degree&#32;-&#32;1&#32;:&#32;degree;
+164 
+165 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(den&#32;!=&#32;1)&#32;total_roots++;
+166 
+167 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;common_divisor&#32;=&#32;0;
+168 
+169 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(degree&#32;%&#32;2&#32;==&#32;0)&#32;{
+170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c&#32;+&#32;1)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>);
+171 &#32;&#32;&#32;&#32;}
+172 
+173 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(den&#32;==&#32;1){
+174 
+175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;k&#32;=&#32;1;&#32;k&#32;&lt;=&#32;total_roots&#32;/&#32;2;&#32;k++)&#32;{
+176 
+177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;den&#32;=&#32;degree;
+178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;angle&#32;=&#32;2&#32;*&#32;M_PI&#32;*&#32;k&#32;/&#32;degree;
+179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numerator&#32;=&#32;2&#32;*&#32;k;
+180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;common_divisor&#32;=&#32;<link linkend="_polynomialsz_8c_1af23d9d3b957105f099417c29e1404852">gcd</link>(numerator,&#32;den);
+181 
+182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numerator&#32;/=&#32;common_divisor;
+183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;den&#32;/=&#32;common_divisor;
+184 
+185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;angle_str[50];
+186 
+187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(den&#32;==&#32;1){
+188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(angle_str,&#32;50,&#32;<emphasis role="stringliteral">&quot;%i*pi&quot;</emphasis>,&#32;numerator);
+189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(numerator&#32;==&#32;1){
+191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(angle_str,&#32;50,&#32;<emphasis role="stringliteral">&quot;*pi/%i&quot;</emphasis>,&#32;den);
+192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(angle_str,&#32;50,&#32;<emphasis role="stringliteral">&quot;%i*pi/%i&quot;</emphasis>,&#32;numerator,&#32;den);
+195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+196 
+197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(den&#32;==&#32;2&#32;&amp;&amp;&#32;numerator&#32;==&#32;1){
+198 
+199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c&#32;-&#32;i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>);
+200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c&#32;+&#32;i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>);
+201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+203 
+204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c&#32;-&#32;e^{i%s})&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;angle_str);
+205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c&#32;-&#32;e^{-i%s})&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;angle_str);
+206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+207 &#32;&#32;&#32;&#32;}
+208 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+209 
+210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;k&#32;=&#32;0;&#32;k&#32;&lt;&#32;p.terms[0].exponent;&#32;k++)&#32;{
+211 
+212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;den&#32;=&#32;degree;
+213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numerator&#32;=&#32;(2&#32;*&#32;k)&#32;+&#32;1;
+214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;common_divisor&#32;=&#32;<link linkend="_polynomialsz_8c_1af23d9d3b957105f099417c29e1404852">gcd</link>(numerator,&#32;den);
+215 
+216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numerator&#32;/=&#32;common_divisor;
+217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;den&#32;/=&#32;common_divisor;
+218 
+219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;angle_str[50];
+220 
+221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(den&#32;==&#32;1){
+222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(angle_str,&#32;50,&#32;<emphasis role="stringliteral">&quot;%i*pi&quot;</emphasis>,&#32;numerator);
+223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(numerator&#32;==&#32;1){
+225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(angle_str,&#32;50,&#32;<emphasis role="stringliteral">&quot;*pi/%i&quot;</emphasis>,&#32;den);
+226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(angle_str,&#32;50,&#32;<emphasis role="stringliteral">&quot;%i*pi/%i&quot;</emphasis>,&#32;numerator,&#32;den);
+229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+230 
+231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(numerator&#32;!=&#32;den)&#32;printf(<emphasis role="stringliteral">&quot;(%c&#32;-&#32;e^{i%s})&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;angle_str);
+232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;printf(<emphasis role="stringliteral">&quot;(%c&#32;+&#32;1)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>);
+233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+234 &#32;&#32;&#32;&#32;}
+235 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1a21b831d691437b7237fa7e1fc813654e"/><section>
+    <title>eisenstein()</title>
+<indexterm><primary>eisenstein</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>eisenstein</secondary></indexterm>
+<para><computeroutput>int eisenstein (<link linkend="_structpolynomial">polynomial</link> x, double p)</computeroutput></para><para>
+
+<para>Aplica o critério de Eisenstein para determinar se um polinômio é irredutível. </para>
+</para>
+
+<para>Verifica se o polinômio satisfaz as condições do Critério de Eisenstein para irredutibilidade usando o número primo p. De acordo com o critério, todos os coeficientes, exceto o líder, devem ser divisíveis por p, e o termo constante não deve ser divisível por p².</para>
+
+<para>Embora o Critério de Eisenstein seja uma ferramenta poderosa, ele tem limitações — por exemplo, o polinômio (x^4 + 1) é irredutível sobre os racionais, apesar de não satisfazer o critério.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry>
+<para>O polinômio a ser testado. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>p</entry><entry>
+<para>Um número primo usado para o teste de Eisenstein. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Retorna</title>
+
+<para>1 se o polinômio for irredutível pelo critério de Eisenstein, -1 caso contrário. </para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+128 
+129 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;irr&#32;=&#32;1;
+130 
+131 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;x.num_of_terms;&#32;i++){
+132 
+133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;irr&#32;=&#32;(x.terms[i].coefficient&#32;%&#32;(int)p&#32;==&#32;0)&#32;?&#32;irr&#32;*&#32;1&#32;:&#32;0;
+134 &#32;&#32;&#32;&#32;}
+135 
+136 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(x.terms[x.num_of_terms&#32;-&#32;1].coefficient&#32;%&#32;(<emphasis role="keywordtype">int</emphasis>)pow(p,&#32;2)&#32;!=&#32;0)
+137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;irr&#32;*=&#32;1;
+138 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;irr&#32;=&#32;0;
+140 
+141 
+142 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(irr&#32;==&#32;1)
+143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+144 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+146 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1af23d9d3b957105f099417c29e1404852"/><section>
+    <title>gcd()</title>
+<indexterm><primary>gcd</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>gcd</secondary></indexterm>
+<para><computeroutput>int gcd (int a, int b)</computeroutput></para><para>
+
+<para>Calcula o maior divisor comum (MDC) de dois inteiros usando o algoritmo de Euclides. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>a</entry><entry>
+<para>O primeiro inteiro. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>b</entry><entry>
+<para>O segundo inteiro. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Retorna</title>
+
+<para>O maior divisor comum entre a e b. </para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+95 
+96 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(b&#32;==&#32;0)
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;a;
+98 
+99 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_polynomialsz_8c_1af23d9d3b957105f099417c29e1404852">gcd</link>(b,&#32;a&#32;%&#32;b);
+100 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1a381995fe1afa062092b685cd4702d1aa"/><section>
+    <title>indOfRoot()</title>
+<indexterm><primary>indOfRoot</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>indOfRoot</secondary></indexterm>
+<para><computeroutput>int indOfRoot (int rad, double rt)</computeroutput></para><para>
+
+<para>Retorna o expoente (índice) de uma potência que tem base <computeroutput>rt</computeroutput> e resultado <computeroutput>rad</computeroutput>. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>rad</entry><entry>
+<para>O radicando (resultado da potência). </para>
+</entry>
+                            </row>
+                            <row>
+<entry>rt</entry><entry>
+<para>A raiz (base da potência). </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Retorna</title>
+
+<para>ind O índice (expoente da potência). </para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+43 
+44 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ind&#32;=&#32;1;
+45 
+46 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>((<emphasis role="keywordtype">int</emphasis>)pow(rt,&#32;ind)&#32;!=&#32;(fabs)(rad)){
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ind++;
+48 &#32;&#32;&#32;&#32;}
+49 
+50 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ind;
+51 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1a03175512d4c4876cf35791cdfa0301ff"/><section>
+    <title>isPrime()</title>
+<indexterm><primary>isPrime</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>isPrime</secondary></indexterm>
+<para><computeroutput>int isPrime (int num)</computeroutput></para><para>
+
+<para>Retorna o n-ésimo número primo, onde n é menor ou igual a 41. </para>
+</para>
+
+<para>Esta função só suporta valores de n até 41 porque o 41º número primo é 179, que é o maior número primo cujo quadrado (179^2 = 32.041) ainda cabe em um inteiro com sinal de 32 bits.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>num</entry><entry>
+<para>A posição do número primo a ser retornado (deve ser ≤ 41). </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Retorna</title>
+
+<para>O n-ésimo número primo, ou 0 se num &gt; 41. </para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+104 
+105 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(num&#32;&gt;&#32;41)
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+107 
+108 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;2;
+109 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pcont&#32;=&#32;0;
+110 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;dcont&#32;=&#32;0;
+111 
+112 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(i&#32;=&#32;2;&#32;i&#32;&lt;&#32;180&#32;&amp;&amp;&#32;pcont&#32;!=&#32;num;&#32;i++){
+113 
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;k&#32;=&#32;1;&#32;k&#32;&lt;=&#32;i;&#32;k++){
+115 
+116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dcont&#32;=&#32;(i&#32;%&#32;k&#32;==&#32;0)&#32;?&#32;dcont&#32;+&#32;1&#32;:&#32;dcont;
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pcont&#32;=&#32;(dcont&#32;==&#32;2)&#32;?&#32;pcont&#32;+&#32;1&#32;:&#32;pcont;
+119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dcont&#32;=&#32;0;
+120 &#32;&#32;&#32;&#32;}
+121 
+122 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;i&#32;-&#32;1;
+123 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1a7f7ab4213c2175b0f3f4e7c7a0ede0d4"/><section>
+    <title>nrt()</title>
+<indexterm><primary>nrt</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>nrt</secondary></indexterm>
+<para><computeroutput>double nrt (double rad, int ind)</computeroutput></para><para>
+
+<para>Retorna a base de uma potência com expoente igual a <computeroutput>ind</computeroutput>, que é igual a <computeroutput>rad</computeroutput>. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>rad</entry><entry>
+<para>O radicando (resultado da potência). </para>
+</entry>
+                            </row>
+                            <row>
+<entry>ind</entry><entry>
+<para>O índice (expoente da potência). </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Retorna</title>
+
+<para>base A base (resultado do radical). </para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+34 
+35 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;base&#32;=&#32;(pow((fabs)(rad),&#32;1.0/(<emphasis role="keywordtype">double</emphasis>)(ind)));
+36 
+37 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;base;
+38 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1a69c9ea71eed7589ce8e9979b68bbea6b"/><section>
+    <title>pCreate()</title>
+<indexterm><primary>pCreate</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>pCreate</secondary></indexterm>
+<para><computeroutput><link linkend="_structpolynomial">polynomial</link> pCreate (int num_of_terms)</computeroutput></para><para>
+
+<para>Cria e retorna um polinômio com um número especificado de termos. </para>
+</para>
+
+<para>Esta função aloca memória para uma estrutura de polinômio e inicializa seu array interno de termos com base no número especificado de termos. Ela é usada como ponto de partida para definir ou manipular polinômios.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>num_of_terms</entry><entry>
+<para>O número de termos que o polinômio deve conter. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Retorna</title>
+
+<para>Uma estrutura polinomial com espaço alocado para o número especificado de termos. </para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+56 
+57 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;
+58 &#32;&#32;&#32;&#32;<link linkend="_structpolynomial">polynomial</link>&#32;p;
+59 &#32;&#32;&#32;&#32;p.num_of_terms&#32;=&#32;num_of_terms;
+60 &#32;&#32;&#32;&#32;p.terms&#32;=&#32;(<link linkend="_structterm">term</link>*)malloc(num_of_terms&#32;*&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structterm">term</link>));
+61 
+62 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(p.terms&#32;==&#32;NULL){
+63 
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\nError&#32;allocating&#32;memory.&quot;</emphasis>);
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;p;
+66 &#32;&#32;&#32;&#32;}
+67 
+68 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;num_of_terms-1;&#32;i&#32;&gt;=&#32;0;&#32;i--){
+69 
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;p.terms[j].coefficient&#32;=&#32;0;
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;p.terms[j].exponent&#32;=&#32;i;
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;j++;
+73 &#32;&#32;&#32;&#32;}
+74 
+75 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;p;
+76 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1a7a4c9c50182fde091bea11c26712e41c"/><section>
+    <title>pFree()</title>
+<indexterm><primary>pFree</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>pFree</secondary></indexterm>
+<para><computeroutput>void pFree (<link linkend="_structpolynomial">polynomial</link> p)</computeroutput></para><para>
+
+<para>Ao contrário de <computeroutput><link linkend="_polynomialsz_8h_1a50bc1f5d462251a36e76b04ed74d5447">printFac()</link></computeroutput>, esta função também desaloca a memória dos termos de <computeroutput>p</computeroutput> usando <computeroutput>free(p.terms)</computeroutput>. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>p</entry><entry>
+<para>O polinômio a ser fatorado. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">635 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+636 
+637 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;check_coefficient&#32;=&#32;(p.num_of_terms&#32;&gt;&#32;2&#32;&amp;&amp;&#32;p.terms[p.num_of_terms&#32;-&#32;1].coefficient&#32;==&#32;1)&#32;?&#32;1&#32;:&#32;0;
+638 
+639 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;p.num_of_terms;&#32;j++)&#32;{
+640 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;check_coefficient&#32;=&#32;((p.terms[j].coefficient)&#32;==&#32;-1)&#32;?&#32;(check_coefficient&#32;+&#32;2)&#32;:&#32;check_coefficient;
+641 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;check_coefficient&#32;=&#32;((p.terms[j].coefficient)&#32;==&#32;1)&#32;?&#32;(check_coefficient&#32;*&#32;check_coefficient)&#32;:&#32;check_coefficient;
+642 &#32;&#32;&#32;&#32;}
+643 
+644 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;irrdcble&#32;=&#32;0;
+645 
+646 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;42&#32;&amp;&amp;&#32;irrdcble&#32;!=&#32;1;&#32;i++)&#32;{
+647 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;irrdcble&#32;=&#32;<link linkend="_polynomialsz_8c_1a21b831d691437b7237fa7e1fc813654e">eisenstein</link>(p,&#32;<link linkend="_polynomialsz_8c_1a03175512d4c4876cf35791cdfa0301ff">isPrime</link>(i));
+648 &#32;&#32;&#32;&#32;}
+649 
+650 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(irrdcble&#32;==&#32;1&#32;&amp;&amp;&#32;p.num_of_terms&#32;&gt;=&#32;5&#32;&amp;&amp;&#32;((p.num_of_terms&#32;%&#32;2&#32;==&#32;0&#32;&amp;&amp;&#32;p.terms[p.num_of_terms&#32;-&#32;1].coefficient&#32;&gt;&#32;0)
+651 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;||&#32;p.num_of_terms&#32;%&#32;2&#32;!=&#32;0&#32;&amp;&amp;&#32;p.terms[p.num_of_terms&#32;-&#32;1].coefficient&#32;&lt;&#32;0)&#32;||&#32;irrdcble&#32;==&#32;-1&#32;&amp;&amp;&#32;p.num_of_terms&#32;&gt;=&#32;5&#32;&amp;&amp;&#32;check_coefficient&#32;&gt;&#32;1){
+652 
+653 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;setlocale(LC_ALL,&#32;<emphasis role="stringliteral">&quot;Portuguese&quot;</emphasis>);
+654 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Não&#32;é&#32;possível&#32;realizar&#32;uma&#32;fatoração&#32;não-imaginária&#32;e/ou&#32;que&#32;não&#32;existem&#32;raízes&#32;representáveis&#32;por&#32;radicais&#32;ou&#32;inteiros&#32;para&#32;o&#32;polinômio\n\n&quot;</emphasis>);
+655 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free(p.terms);
+656 
+657 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+658 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+659 
+660 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(p.num_of_terms&#32;==&#32;2&#32;&amp;&amp;&#32;p.terms[0].exponent&#32;==&#32;<link linkend="_polynomialsz_8c_1a381995fe1afa062092b685cd4702d1aa">indOfRoot</link>(p.terms[1].coefficient,&#32;(<link linkend="_polynomialsz_8c_1a7f7ab4213c2175b0f3f4e7c7a0ede0d4">nrt</link>(p.terms[1].coefficient,&#32;p.terms[0].exponent))))&#32;{
+661 
+662 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((p.terms[1].coefficient&#32;&lt;&#32;0&#32;&amp;&amp;&#32;p.terms[0].exponent&#32;%&#32;2&#32;==&#32;0)&#32;||&#32;p.terms[0].exponent&#32;%&#32;2&#32;!=&#32;0)&#32;{
+663 
+664 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1a2e6fab028468e38950e5ec59a67e4fe2">powerDiffFactoring</link>(p);
+665 
+666 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(check_coefficient&#32;==&#32;1)&#32;<link linkend="_polynomialsz_8c_1ac92b3863e640384c7e86b27afe9ecff2">complexp</link>(p);
+667 
+668 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free(p.terms);
+669 
+670 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;;\n\n&quot;</emphasis>);
+671 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+672 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+673 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+674 
+675 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(p.terms[0].exponent&#32;%&#32;2&#32;==&#32;0&#32;&amp;&amp;&#32;p.num_of_terms&#32;&lt;&#32;5&#32;&amp;&amp;&#32;p.terms[1].exponent&#32;!=&#32;3)&#32;{
+676 
+677 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1a797fa934e9e23fd2a700827339a18661">bhaskara</link>(p);
+678 
+679 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free(p.terms);
+680 
+681 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;;\n\n&quot;</emphasis>);
+682 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+683 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+684 
+685 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(check_coefficient&#32;!=&#32;1)&#32;<link linkend="_polynomialsz_8c_1ac7fcd11482732d3fcaeaf1c6688a5f96">briot_ruffini</link>(p);
+686 
+687 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(check_coefficient&#32;==&#32;1){
+688 
+689 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1ac92b3863e640384c7e86b27afe9ecff2">complexp</link>(p);
+690 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;;\n\n&quot;</emphasis>);
+691 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+692 
+693 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free(p.terms);
+694 
+695 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+696 &#32;&#32;&#32;&#32;}
+697 
+698 &#32;&#32;&#32;&#32;free(p.terms);
+699 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1a2e6fab028468e38950e5ec59a67e4fe2"/><section>
+    <title>powerDiffFactoring()</title>
+<indexterm><primary>powerDiffFactoring</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>powerDiffFactoring</secondary></indexterm>
+<para><computeroutput>void powerDiffFactoring (<link linkend="_structpolynomial">polynomial</link> p)</computeroutput></para><para>
+
+<para>Aplica a identidade da soma ou diferença de potências (a^n ± b^n). Para n ímpar, tanto soma quanto diferença podem ser fatoradas. Para n par, apenas a diferença pode ser fatorada. </para>
+</para>
+
+<para>Assume que o polinômio está na forma x^n ± a e imprime os passos de fatoração com base na fórmula. Lida com expoentes pares e ímpares.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>p</entry><entry>
+<para>O polinômio a ser fatorado. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+395 
+396 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;p.terms[0].exponent&#32;-&#32;1,&#32;even_num&#32;=&#32;1;
+397 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;count&#32;=&#32;1;
+398 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;a&#32;=&#32;(<link linkend="_polynomialsz_8c_1a7f7ab4213c2175b0f3f4e7c7a0ede0d4">nrt</link>(p.terms[1].coefficient,&#32;p.terms[0].exponent));
+399 
+400 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c%c%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;(p.terms[1].coefficient&#32;&lt;&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)a);
+401 
+402 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(p.terms[0].exponent&#32;%&#32;2&#32;==&#32;0){
+403 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c%c%i)&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;(p.terms[1].coefficient&#32;&lt;&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)a);
+404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;even_num++;
+405 &#32;&#32;&#32;&#32;}
+406 
+407 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(p.terms[0].exponent&#32;&lt;&#32;2){
+408 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+409 &#32;&#32;&#32;&#32;}
+410 
+411 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%c^{%i}&quot;</emphasis>,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;(even_num&#32;==&#32;2)&#32;?&#32;--i&#32;:&#32;i);
+412 
+413 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(i&#32;-&#32;even_num&#32;&gt;&#32;0){
+414 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;&#32;%c&#32;%i%c^{%i}&quot;</emphasis>,
+415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(p.terms[1].coefficient&#32;&gt;&#32;0&#32;&amp;&amp;&#32;i&#32;%&#32;2&#32;==&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>,
+416 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(even_num&#32;==&#32;2)&#32;?&#32;(<emphasis role="keywordtype">int</emphasis>)(pow(a,&#32;++count))&#32;:&#32;(<emphasis role="keywordtype">int</emphasis>)(pow(a,&#32;count++)),
+417 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;i&#32;-&#32;even_num);
+418 
+419 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(even_num&#32;==&#32;2){
+420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;i&#32;=&#32;i&#32;-&#32;even_num;
+421 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;count++;
+422 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;i--;
+424 &#32;&#32;&#32;&#32;}
+425 
+426 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;&#32;+&#32;%i)&quot;</emphasis>,&#32;(<emphasis role="keywordtype">int</emphasis>)(pow(a,&#32;p.terms[0].exponent&#32;-&#32;even_num)));
+427 
+428 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+429 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1acbe8f5ae59186f01c26cd18d4f801e18"/><section>
+    <title>pPrint()</title>
+<indexterm><primary>pPrint</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>pPrint</secondary></indexterm>
+<para><computeroutput>void pPrint (<link linkend="_structpolynomial">polynomial</link> p)</computeroutput></para><programlisting linenumbering="unnumbered">80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+81 
+82 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;(%i%c^%i&quot;</emphasis>,&#32;p.terms[0].coefficient,&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;p.terms[0].exponent);
+83 
+84 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;p.num_of_terms;&#32;i++){
+85 
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%c%i%c^%i&quot;</emphasis>,&#32;(p.terms[i].coefficient&#32;&gt;=&#32;0)&#32;?&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>&#32;:&#32;<emphasis role="charliteral">&apos;-&apos;</emphasis>,&#32;(abs)(p.terms[i].coefficient),&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>,&#32;p.terms[i].exponent);
+87 &#32;&#32;&#32;&#32;}
+88 
+89 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;)\n\n&quot;</emphasis>);
+90 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1a50bc1f5d462251a36e76b04ed74d5447"/><section>
+    <title>printFac()</title>
+<indexterm><primary>printFac</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>printFac</secondary></indexterm>
+<para><computeroutput>void printFac (<link linkend="_structpolynomial">polynomial</link> p)</computeroutput></para><para>
+
+<para>Imprime a fatoração de um polinômio ou exibe a mensagem apropriada com base no tipo de fatoração que pode ser realizada nele. </para>
+</para>
+
+<para>Esta função avalia um polinômio para determinar a técnica de fatoração apropriada:<itemizedlist>
+<listitem>
+<para>Se o polinômio é irredutível com base no critério de Eisenstein, ela exibe uma mensagem indicando que não há fatoração não-imaginária ou raízes representáveis por radicais.</para>
+</listitem><listitem>
+<para>Se o polinômio é quadrático, aplica a fatoração por diferença de potências, se aplicável.</para>
+</listitem><listitem>
+<para>Se o polinômio tem grau par e três ou menos termos, aplica o método de Bhaskara.</para>
+</listitem><listitem>
+<para>Se o polinômio não atender a nenhum dos critérios acima, tenta o método Briot-Ruffini ou realiza fatoração complexa, se necessário.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>A função lida com polinômios com número variável de termos e coeficientes, incluindo verificação de casos especiais, como coeficientes únicos e avaliação do critério de Eisenstein.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>p</entry><entry>
+<para>O polinômio a ser fatorado. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<programlisting linenumbering="unnumbered">556 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+557 
+558 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;check_coefficient&#32;=&#32;(p.num_of_terms&#32;&gt;&#32;2&#32;&amp;&amp;&#32;p.terms[p.num_of_terms&#32;-&#32;1].coefficient&#32;==&#32;1)&#32;?&#32;1&#32;:&#32;0;
+559 
+560 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;p.num_of_terms;&#32;j++)&#32;{
+561 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;check_coefficient&#32;=&#32;((p.terms[j].coefficient)&#32;==&#32;-1)&#32;?&#32;(check_coefficient&#32;+&#32;2)&#32;:&#32;check_coefficient;
+562 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;check_coefficient&#32;=&#32;((p.terms[j].coefficient)&#32;==&#32;1)&#32;?&#32;(check_coefficient&#32;*&#32;check_coefficient)&#32;:&#32;check_coefficient;
+563 &#32;&#32;&#32;&#32;}
+564 
+565 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;irrdcble&#32;=&#32;0;
+566 
+567 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;42&#32;&amp;&amp;&#32;irrdcble&#32;!=&#32;1;&#32;i++)&#32;{
+568 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;irrdcble&#32;=&#32;<link linkend="_polynomialsz_8c_1a21b831d691437b7237fa7e1fc813654e">eisenstein</link>(p,&#32;<link linkend="_polynomialsz_8c_1a03175512d4c4876cf35791cdfa0301ff">isPrime</link>(i));
+569 &#32;&#32;&#32;&#32;}
+570 
+571 &#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+572 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*&#32;Essa&#32;condicional&#32;checa&#32;se&#32;o&#32;polinômio&#32;condiz&#32;com&#32;um&#32;dos&#32;dois&#32;critérios:&#x240D;</emphasis>
+573 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*</emphasis>
+574 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*&#32;1.&#32;É&#32;irredutível,&#32;tem&#32;cinco&#32;ou&#32;mais&#32;termos&#32;e&#32;satisfaz&#32;um&#32;dos&#32;casos:&#x240D;</emphasis>
+575 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*&#32;&#32;&#32;&#32;-&#32;Tem&#32;maior&#32;grau&#32;par,&#32;e&#32;o&#32;termo&#32;constante&#32;(último&#32;coeficiente)&#32;é&#32;positivo.&#x240D;</emphasis>
+576 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*&#32;&#32;&#32;&#32;-&#32;Tem&#32;grau&#32;ímpar,&#32;e&#32;o&#32;termo&#32;constante&#32;é&#32;negativo.&#x240D;</emphasis>
+577 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*</emphasis>
+578 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*&#32;2.&#32;Não&#32;é&#32;irredutível&#32;(irrdcble&#32;==&#32;-1),&#32;tem&#32;5&#32;ou&#32;mais&#32;termos,&#32;e&#32;se&#32;check_coefficient&#32;for&#32;maior&#32;que&#32;1.&#x240D;</emphasis>
+579 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Isso&#32;implica&#32;que&#32;o&#32;polinômio&#32;talvez&#32;não&#32;atenda&#32;a&#32;uma&#32;forma&#32;simples&#32;de&#32;fatoração&#32;ou&#32;a&#32;um&#32;padrão&#32;de&#32;progressão.&#x240D;</emphasis>
+580 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*</emphasis>
+581 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*&#32;Se&#32;qualquer&#32;uma&#32;dessas&#32;condições&#32;for&#32;atendida,&#32;a&#32;função&#32;imprime&#32;uma&#32;mensagem&#32;indicando&#32;que&#x240D;</emphasis>
+582 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*&#32;não&#32;é&#32;possível&#32;realizar&#32;uma&#32;fatoração&#32;não-imaginária&#32;e/ou&#32;que&#32;não&#32;existem&#32;raízes&#x240D;</emphasis>
+583 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*&#32;representáveis&#32;por&#32;radicais&#32;ou&#32;inteiros&#32;para&#32;o&#32;polinômio,&#32;e&#32;então&#32;a&#32;função&#32;retorna.&#x240D;</emphasis>
+584 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+585 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(irrdcble&#32;==&#32;1&#32;&amp;&amp;&#32;p.num_of_terms&#32;&gt;=&#32;5&#32;&amp;&amp;&#32;((p.num_of_terms&#32;%&#32;2&#32;==&#32;0&#32;&amp;&amp;&#32;p.terms[p.num_of_terms&#32;-&#32;1].coefficient&#32;&gt;&#32;0)
+586 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;||&#32;p.num_of_terms&#32;%&#32;2&#32;!=&#32;0&#32;&amp;&amp;&#32;p.terms[p.num_of_terms&#32;-&#32;1].coefficient&#32;&lt;&#32;0)&#32;||&#32;irrdcble&#32;==&#32;-1&#32;&amp;&amp;&#32;p.num_of_terms&#32;&gt;=&#32;5&#32;&amp;&amp;&#32;check_coefficient&#32;&gt;&#32;1){
+587 
+588 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;setlocale(LC_ALL,&#32;<emphasis role="stringliteral">&quot;Portuguese&quot;</emphasis>);
+589 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Não&#32;é&#32;possível&#32;realizar&#32;uma&#32;fatoração&#32;não-imaginária&#32;e/ou&#32;que&#32;não&#32;existem&#32;raízes&#32;representáveis&#32;por&#32;radicais&#32;ou&#32;inteiros&#32;para&#32;o&#32;polinômio\n\n&quot;</emphasis>);
+590 
+591 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+592 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+593 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Lida&#32;com&#32;casos&#32;de&#32;polinômios&#32;quadráticos</emphasis>
+594 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(p.num_of_terms&#32;==&#32;2&#32;&amp;&amp;&#32;p.terms[0].exponent&#32;==&#32;<link linkend="_polynomialsz_8c_1a381995fe1afa062092b685cd4702d1aa">indOfRoot</link>(p.terms[1].coefficient,&#32;(<link linkend="_polynomialsz_8c_1a7f7ab4213c2175b0f3f4e7c7a0ede0d4">nrt</link>(p.terms[1].coefficient,&#32;p.terms[0].exponent))))&#32;{
+595 
+596 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((p.terms[1].coefficient&#32;&lt;&#32;0&#32;&amp;&amp;&#32;p.terms[0].exponent&#32;%&#32;2&#32;==&#32;0)&#32;||&#32;p.terms[0].exponent&#32;%&#32;2&#32;!=&#32;0)&#32;{
+597 
+598 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Aplica&#32;a&#32;fatoração&#32;por&#32;diferença&#32;de&#32;potência</emphasis>
+599 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1a2e6fab028468e38950e5ec59a67e4fe2">powerDiffFactoring</link>(p);
+600 
+601 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Aplica&#32;a&#32;fatoração&#32;complexa&#32;caso&#32;precise</emphasis>
+602 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(check_coefficient&#32;==&#32;1)&#32;<link linkend="_polynomialsz_8c_1ac92b3863e640384c7e86b27afe9ecff2">complexp</link>(p);
+603 
+604 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;;\n\n&quot;</emphasis>);
+605 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+606 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+607 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+608 
+609 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Aplica&#32;o&#32;método&#32;de&#32;Bhaskara&#32;se&#32;o&#32;maior&#32;grau&#32;do&#32;polinômio&#32;for&#32;par&#32;e&#32;possuir&#32;menos&#32;que&#32;três&#32;termos</emphasis>
+610 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(p.terms[0].exponent&#32;%&#32;2&#32;==&#32;0&#32;&amp;&amp;&#32;p.num_of_terms&#32;&lt;&#32;5&#32;&amp;&amp;&#32;p.terms[1].exponent&#32;!=&#32;3)&#32;{
+611 
+612 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1a797fa934e9e23fd2a700827339a18661">bhaskara</link>(p);
+613 
+614 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;;\n\n&quot;</emphasis>);
+615 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+616 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+617 
+618 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Aplica&#32;Briot-Ruffini&#32;(divisão&#32;sintética)&#32;caso&#32;o&#32;polinômio&#32;seja&#32;de&#32;coeficiente&#32;único</emphasis>
+619 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(check_coefficient&#32;!=&#32;1)&#32;<link linkend="_polynomialsz_8c_1ac7fcd11482732d3fcaeaf1c6688a5f96">briot_ruffini</link>(p);
+620 
+621 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Aplica&#32;a&#32;fatoração&#32;complexa&#32;caso&#32;precise</emphasis>
+622 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(check_coefficient&#32;==&#32;1){
+623 
+624 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8c_1ac92b3863e640384c7e86b27afe9ecff2">complexp</link>(p);
+625 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;;\n\n&quot;</emphasis>);
+626 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+627 
+628 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;;\n\n&quot;</emphasis>);
+629 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+630 &#32;&#32;&#32;&#32;}
+631 }
+</programlisting></section>
+<anchor xml:id="_polynomialsz_8c_1aa0f3539fed923511c6386c9bcd4214aa"/><section>
+    <title>setTerms()</title>
+<indexterm><primary>setTerms</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>setTerms</secondary></indexterm>
+<para><computeroutput><link linkend="_structterm">term</link> setTerms (int coef, int exp)</computeroutput></para><para>
+
+<para>Cria e define o coeficiente e o expoente de um termo polinomial. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parâmetros</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coef</entry><entry>
+<para>O coeficiente do termo. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>exp</entry><entry>
+<para>O expoente do termo. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Retorna</title>
+
+<para>T O termo completo. </para>
+</formalpara>
+</para>
+<programlisting linenumbering="unnumbered">22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+23 
+24 &#32;&#32;&#32;&#32;<link linkend="_structterm">term</link>&#32;T;
+25 &#32;&#32;&#32;&#32;T.coefficient&#32;=&#32;coef;
+26 &#32;&#32;&#32;&#32;T.exponent&#32;=&#32;exp;
+27 
+28 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;T;
+29 }
+</programlisting></section>
+</section>
+<section>
+<title>Variáveis</title>
+<anchor xml:id="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960"/><section>
+    <title>var</title>
+<indexterm><primary>var</primary><secondary>polynomialsz.c</secondary></indexterm>
+<indexterm><primary>polynomialsz.c</primary><secondary>var</secondary></indexterm>
+<para><computeroutput>char var = &apos;x&apos;</computeroutput></para><para>
+
+<para>Variável simbólica para representar raízes e expressões polinomiais. </para>
+</para>
+
+<para>Variável simbólica global usada nas expressões polinomiais.</para>
+
+<para>É inicializada, por padrão, como &quot;x&quot;, mas pode ser alterada quando desejado. </para>
+</section>
+</section>
+</section>

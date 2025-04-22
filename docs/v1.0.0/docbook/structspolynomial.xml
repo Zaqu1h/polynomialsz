@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structspolynomial" xml:lang="en-US">
+<title>spolynomial Struct Reference</title>
+<indexterm><primary>spolynomial</primary></indexterm>
+<para>
+<computeroutput>#include &lt;polynomialsz.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_polynomialsz_8h_1a575d628ed3a93a2ed150fb42296af44d">term</link> * <link linkend="_structspolynomial_1a375ec080d97a84145d12e0f7920a5d94">terms</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_structspolynomial_1a1a2442140467cb2c35ef91cf760850fe">num_of_terms</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_structspolynomial_1a1a2442140467cb2c35ef91cf760850fe"/><section>
+    <title>num_of_terms</title>
+<indexterm><primary>num_of_terms</primary><secondary>spolynomial</secondary></indexterm>
+<indexterm><primary>spolynomial</primary><secondary>num_of_terms</secondary></indexterm>
+<para><computeroutput>int num_of_terms</computeroutput></para>
+<para>Number of terms in the polynomial. </para>
+</section>
+<anchor xml:id="_structspolynomial_1a375ec080d97a84145d12e0f7920a5d94"/><section>
+    <title>terms</title>
+<indexterm><primary>terms</primary><secondary>spolynomial</secondary></indexterm>
+<indexterm><primary>spolynomial</primary><secondary>terms</secondary></indexterm>
+<para><computeroutput><link linkend="_polynomialsz_8h_1a575d628ed3a93a2ed150fb42296af44d">term</link>* terms</computeroutput></para>
+<para>Dynamic array of polynomial terms. </para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/isaqu/Desktop/Outroam/UESC/PID/Algoritmo/v1.0.0/<link linkend="_polynomialsz_8h">polynomialsz.h</link></section>
+</section>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_42079d3814bcdc62068be2e980447cba" xml:lang="en-US">
+<title>C:/Users/isaqu/Desktop/Outroam/UESC/PID/Algoritmo/v1.0.0 Directory Reference</title>
+<indexterm><primary>C:/Users/isaqu/Desktop/Outroam/UESC/PID/Algoritmo/v1.0.0 Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_polynomialsz_8c">polynomialsz.c</link></para>
+
+<para>Source file for polynomial factorization functionalities. </para>
+</listitem>
+            <listitem><para>file <link linkend="_polynomialsz_8h">polynomialsz.h</link></para>
+
+<para>Header file for polynomial factorization structures. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

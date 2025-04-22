@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_polynomialsz_8h_source" xml:lang="pt-BR">
+<title>polynomialsz.h</title>
+<indexterm><primary>C:/Users/isaqu/Desktop/Outroam/UESC/PID/Algoritmo/v1.0.0 PTBR/polynomialsz.h</primary></indexterm>
+Ir para a documentação desse arquivo.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;POLYNOMIALSZ_H_INCLUDED</emphasis>
+2 <emphasis role="preprocessor">#define&#32;POLYNOMIALSZ_H_INCLUDED</emphasis>
+3 
+22 
+23 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+24 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+25 <emphasis role="preprocessor">#include&#32;&lt;math.h&gt;</emphasis>&#32;
+26 <emphasis role="preprocessor">#include&#32;&lt;locale.h&gt;</emphasis>&#32;
+27 
+28 <emphasis role="preprocessor">#define&#32;_USE_MATH_DEFINES&#32;</emphasis><emphasis role="preprocessor"></emphasis>
+29 
+36 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;<link linkend="_polynomialsz_8c_1a1e7912e98005a84fdb6eaa18e6157960">var</link>;
+37 
+45 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structsterm">sterm</link>&#32;{
+46 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_structsterm_1a71f069c07c811581bd3cf6ba24752aac">coefficient</link>;&#32;
+47 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_structsterm_1ab15e6c2526a1d35231ff95f2eb782d84">exponent</link>;&#32;&#32;&#32;&#32;
+48 }&#32;<link linkend="_structterm">term</link>;
+49 
+56 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structspolynomial">spolynomial</link>&#32;{
+57 &#32;&#32;&#32;&#32;<link linkend="_polynomialsz_8h_1a575d628ed3a93a2ed150fb42296af44d">term</link>&#32;*<link linkend="_structspolynomial_1a375ec080d97a84145d12e0f7920a5d94">terms</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+58 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_structspolynomial_1a1a2442140467cb2c35ef91cf760850fe">num_of_terms</link>;&#32;&#32;&#32;
+59 }&#32;<link linkend="_structpolynomial">polynomial</link>;
+60 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+68 <link linkend="_structterm">term</link>&#32;<link linkend="_polynomialsz_8h_1aa0f3539fed923511c6386c9bcd4214aa">setTerms</link>(<emphasis role="keywordtype">int</emphasis>&#32;coef,&#32;<emphasis role="keywordtype">int</emphasis>&#32;exp);
+69 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+77 <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_polynomialsz_8h_1a7f7ab4213c2175b0f3f4e7c7a0ede0d4">nrt</link>(<emphasis role="keywordtype">double</emphasis>&#32;rad,&#32;<emphasis role="keywordtype">int</emphasis>&#32;ind);
+78 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+86 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_polynomialsz_8h_1a381995fe1afa062092b685cd4702d1aa">indOfRoot</link>(<emphasis role="keywordtype">int</emphasis>&#32;rad,&#32;<emphasis role="keywordtype">double</emphasis>&#32;rt);
+87 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+98 <link linkend="_structpolynomial">polynomial</link>&#32;<link linkend="_polynomialsz_8h_1a69c9ea71eed7589ce8e9979b68bbea6b">pCreate</link>(<emphasis role="keywordtype">int</emphasis>&#32;num_of_terms);
+99 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+100 
+108 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_polynomialsz_8h_1af23d9d3b957105f099417c29e1404852">gcd</link>(<emphasis role="keywordtype">int</emphasis>&#32;a,&#32;<emphasis role="keywordtype">int</emphasis>&#32;b);
+109 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+119 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_polynomialsz_8h_1a03175512d4c4876cf35791cdfa0301ff">isPrime</link>(<emphasis role="keywordtype">int</emphasis>&#32;num);
+120 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+136 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_polynomialsz_8h_1a21b831d691437b7237fa7e1fc813654e">eisenstein</link>(<link linkend="_structpolynomial">polynomial</link>&#32;x,&#32;<emphasis role="keywordtype">double</emphasis>&#32;p);
+137 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+150 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_polynomialsz_8h_1ac92b3863e640384c7e86b27afe9ecff2">complexp</link>(<link linkend="_structpolynomial">polynomial</link>&#32;p);
+151 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+177 <emphasis role="keywordtype">char</emphasis>*&#32;<link linkend="_polynomialsz_8h_1a49c6f9f297f6b78563fc144ba086b9f1">bhaskaraSimplify</link>(<emphasis role="keywordtype">int</emphasis>&#32;aexp,&#32;<emphasis role="keywordtype">int</emphasis>&#32;den,&#32;<emphasis role="keywordtype">int</emphasis>&#32;b,&#32;<emphasis role="keywordtype">double</emphasis>&#32;delta,&#32;<emphasis role="keywordtype">double</emphasis>*&#32;rootsPair);
+178 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+188 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_polynomialsz_8h_1a797fa934e9e23fd2a700827339a18661">bhaskara</link>(<link linkend="_structpolynomial">polynomial</link>&#32;p);
+189 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+200 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_polynomialsz_8h_1a2e6fab028468e38950e5ec59a67e4fe2">powerDiffFactoring</link>(<link linkend="_structpolynomial">polynomial</link>&#32;p);
+201 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+210 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_polynomialsz_8h_1ac7fcd11482732d3fcaeaf1c6688a5f96">briot_ruffini</link>(<link linkend="_structpolynomial">polynomial</link>&#32;p);
+211 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+229 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_polynomialsz_8h_1a50bc1f5d462251a36e76b04ed74d5447">printFac</link>(<link linkend="_structpolynomial">polynomial</link>&#32;p);
+230 <emphasis role="comment">//-----------------------------------------------------------------------------</emphasis>
+237 &#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_polynomialsz_8h_1a7a4c9c50182fde091bea11c26712e41c">pFree</link>(<link linkend="_structpolynomial">polynomial</link>&#32;p);
+238 
+239 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;POLYNOMIALSZ_H_INCLUDED</emphasis>
+</programlisting></section>
