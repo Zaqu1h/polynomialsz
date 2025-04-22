@@ -80,7 +80,10 @@ printFac(U);  < Mostra o polinômio fatorado (ou pelo menos eu espero que sim)
 
   return 0;
 ```
-O polinômio criado em questão foi: x² + 4 (ou x² + 0x + 4).
+O polinômio criado em questão foi: x² + 4 (ou x² + 0x + 4). O resultado apresentado, neste caso, será:
+```bash
+(x - i2)(x + i2)
+```
 
 ---
 
