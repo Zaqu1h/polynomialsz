@@ -23,7 +23,7 @@
 ## 📝 Instruções de uso
 
 Este repositório está organizado em versões, com suporte para português e inglês.  
-Siga os passos abaixo para clonar o projeto e acessar os códigos-fonte
+Siga os passos abaixo para clonar o projeto e acessar os códigos-fonte.
 #### Observação: *Apesar do guia abaixo, você pode simplesmente executar os códigos na IDE de sua preferência, obviamente.*
 
 ### 🧬 Passo 1: Clone o repositório
@@ -108,7 +108,7 @@ As documentações foram feitas usando Doxygen. Você pode procurar por arquivos
 
 ---
 
-## ⁉️ Dúvidas, dicas sugestões
+## ⁉️ Dúvidas, dicas e sugestões
 
 Sinta-se livre para me contactar pelo instagram ou pelo meu email, disponíveis a um clique de distância no fim deste README!
 
