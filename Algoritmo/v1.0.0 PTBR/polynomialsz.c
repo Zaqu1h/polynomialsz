@@ -61,7 +61,7 @@ polynomial pCreate(int num_of_terms) {
 
 	if(p.terms == NULL){
 
-        printf("\nError allocating memory.");
+        printf("\nErro ao alocar memória.");
         return p;
 	}
 
