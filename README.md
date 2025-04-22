@@ -95,7 +95,7 @@ O polinômio criado em questão foi: x² + 4 (ou x² + 0x + 4). O resultado apre
 > 
 > └── v1.0.0/        → English Documentation
 
-As documentações foram feitas usando Doxygen. 
+As documentações foram feitas usando Doxygen. Você pode procurar por arquivos chamados "refman.rtf" ou "index.html".
 
 ---
 
