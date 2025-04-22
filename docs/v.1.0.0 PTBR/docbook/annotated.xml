@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="pt-BR">
-<title>Estruturas de Dados</title>
-Aqui estão as estruturas de dados, uniões e suas respectivas descrições:<link linkend="_structpolynomial">polynomial</link>
-<para>Representa um polinômio como um array de termos </para>
-<link linkend="_structspolynomial">spolynomial</link><link linkend="_structsterm">sterm</link><link linkend="_structterm">term</link>
-<para>Representa um único termo de um polinômio </para>
-</section>

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>polynomialsz: Código-Fonte de C:/Users/isaqu/Desktop/Outroam/UESC/polynomialsz/Algoritmo/v1.0.0 PTBR/polynomialsz.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">polynomialsz<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Um algoritmo de fatoração polinomial</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3e8fb4934f051899f333fd74aa0d6ec8.html">Algoritmo</a></li><li class="navelem"><a class="el" href="dir_d8edcab8a2040dbb9911a2ee9530edfe.html">v1.0.0 PTBR</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">polynomialsz.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="polynomialsz_8h.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef POLYNOMIALSZ_H_INCLUDED</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define POLYNOMIALSZ_H_INCLUDED</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;math.h&gt;</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;locale.h&gt;</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="polynomialsz_8h.html#a525335710b53cb064ca56b936120431e">   28</a></span><span class="preprocessor">#define _USE_MATH_DEFINES </span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="polynomialsz_8c.html#a1e7912e98005a84fdb6eaa18e6157960">var</a>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="};">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structsterm.html">   45</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structsterm.html">sterm</a> {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structsterm.html#a71f069c07c811581bd3cf6ba24752aac">   46</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structsterm.html#a71f069c07c811581bd3cf6ba24752aac">coefficient</a>; </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structsterm.html#ab15e6c2526a1d35231ff95f2eb782d84">   47</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structsterm.html#ab15e6c2526a1d35231ff95f2eb782d84">exponent</a>;    </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="polynomialsz_8h.html#a575d628ed3a93a2ed150fb42296af44d">   48</a></span>} <a class="code hl_struct" href="structterm.html">term</a>;</div>
+</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span></div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="};">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structspolynomial.html">   56</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structspolynomial.html">spolynomial</a> {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="structspolynomial.html#a375ec080d97a84145d12e0f7920a5d94">   57</a></span>    <a class="code hl_typedef" href="polynomialsz_8h.html#a575d628ed3a93a2ed150fb42296af44d">term</a> *<a class="code hl_variable" href="structspolynomial.html#a375ec080d97a84145d12e0f7920a5d94">terms</a>;        </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structspolynomial.html#a1a2442140467cb2c35ef91cf760850fe">   58</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structspolynomial.html#a1a2442140467cb2c35ef91cf760850fe">num_of_terms</a>;   </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="polynomialsz_8h.html#a85b14fecdab3c3bf43287e0375ed1f6b">   59</a></span>} <a class="code hl_struct" href="structpolynomial.html">polynomial</a>;</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><a class="code hl_struct" href="structterm.html">term</a> <a class="code hl_function" href="polynomialsz_8h.html#aa0f3539fed923511c6386c9bcd4214aa">setTerms</a>(<span class="keywordtype">int</span> coef, <span class="keywordtype">int</span> exp);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keywordtype">double</span> <a class="code hl_function" href="polynomialsz_8h.html#a7f7ab4213c2175b0f3f4e7c7a0ede0d4">nrt</a>(<span class="keywordtype">double</span> rad, <span class="keywordtype">int</span> ind);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">int</span> <a class="code hl_function" href="polynomialsz_8h.html#a381995fe1afa062092b685cd4702d1aa">indOfRoot</a>(<span class="keywordtype">int</span> rad, <span class="keywordtype">double</span> rt);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><a class="code hl_struct" href="structpolynomial.html">polynomial</a> <a class="code hl_function" href="polynomialsz_8h.html#a69c9ea71eed7589ce8e9979b68bbea6b">pCreate</a>(<span class="keywordtype">int</span> num_of_terms);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keywordtype">int</span> <a class="code hl_function" href="polynomialsz_8h.html#af23d9d3b957105f099417c29e1404852">gcd</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keywordtype">int</span> <a class="code hl_function" href="polynomialsz_8h.html#a03175512d4c4876cf35791cdfa0301ff">isPrime</a>(<span class="keywordtype">int</span> num);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="keywordtype">int</span> <a class="code hl_function" href="polynomialsz_8h.html#a21b831d691437b7237fa7e1fc813654e">eisenstein</a>(<a class="code hl_struct" href="structpolynomial.html">polynomial</a> x, <span class="keywordtype">double</span> p);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="keywordtype">void</span> <a class="code hl_function" href="polynomialsz_8h.html#ac92b3863e640384c7e86b27afe9ecff2">complexp</a>(<a class="code hl_struct" href="structpolynomial.html">polynomial</a> p);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="keywordtype">char</span>* <a class="code hl_function" href="polynomialsz_8h.html#a49c6f9f297f6b78563fc144ba086b9f1">bhaskaraSimplify</a>(<span class="keywordtype">int</span> aexp, <span class="keywordtype">int</span> den, <span class="keywordtype">int</span> b, <span class="keywordtype">double</span> delta, <span class="keywordtype">double</span>* rootsPair);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="keywordtype">void</span> <a class="code hl_function" href="polynomialsz_8h.html#a797fa934e9e23fd2a700827339a18661">bhaskara</a>(<a class="code hl_struct" href="structpolynomial.html">polynomial</a> p);</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="keywordtype">void</span> <a class="code hl_function" href="polynomialsz_8h.html#a2e6fab028468e38950e5ec59a67e4fe2">powerDiffFactoring</a>(<a class="code hl_struct" href="structpolynomial.html">polynomial</a> p);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="keywordtype">void</span> <a class="code hl_function" href="polynomialsz_8h.html#ac7fcd11482732d3fcaeaf1c6688a5f96">briot_ruffini</a>(<a class="code hl_struct" href="structpolynomial.html">polynomial</a> p);</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="keywordtype">void</span> <a class="code hl_function" href="polynomialsz_8h.html#a50bc1f5d462251a36e76b04ed74d5447">printFac</a>(<a class="code hl_struct" href="structpolynomial.html">polynomial</a> p);</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> <span class="keywordtype">void</span> <a class="code hl_function" href="polynomialsz_8h.html#a7a4c9c50182fde091bea11c26712e41c">pFree</a>(<a class="code hl_struct" href="structpolynomial.html">polynomial</a> p);</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="preprocessor">#endif </span><span class="comment">// POLYNOMIALSZ_H_INCLUDED</span></div>
+<div class="ttc" id="apolynomialsz_8c_html_a1e7912e98005a84fdb6eaa18e6157960"><div class="ttname"><a href="polynomialsz_8c.html#a1e7912e98005a84fdb6eaa18e6157960">var</a></div><div class="ttdeci">char var</div><div class="ttdoc">Variável simbólica para representar raízes e expressões polinomiais.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:18</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a03175512d4c4876cf35791cdfa0301ff"><div class="ttname"><a href="polynomialsz_8h.html#a03175512d4c4876cf35791cdfa0301ff">isPrime</a></div><div class="ttdeci">int isPrime(int num)</div><div class="ttdoc">Retorna o n-ésimo número primo, onde n é menor ou igual a 41.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:103</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a21b831d691437b7237fa7e1fc813654e"><div class="ttname"><a href="polynomialsz_8h.html#a21b831d691437b7237fa7e1fc813654e">eisenstein</a></div><div class="ttdeci">int eisenstein(polynomial x, double p)</div><div class="ttdoc">Aplica o critério de Eisenstein para determinar se um polinômio é irredutível.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:127</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a2e6fab028468e38950e5ec59a67e4fe2"><div class="ttname"><a href="polynomialsz_8h.html#a2e6fab028468e38950e5ec59a67e4fe2">powerDiffFactoring</a></div><div class="ttdeci">void powerDiffFactoring(polynomial p)</div><div class="ttdoc">Aplica a identidade da soma ou diferença de potências (a^n ± b^n). Para n ímpar, tanto soma quanto di...</div><div class="ttdef"><b>Definição</b> polynomialsz.c:394</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a381995fe1afa062092b685cd4702d1aa"><div class="ttname"><a href="polynomialsz_8h.html#a381995fe1afa062092b685cd4702d1aa">indOfRoot</a></div><div class="ttdeci">int indOfRoot(int rad, double rt)</div><div class="ttdoc">Retorna o expoente (índice) de uma potência que tem base rt e resultado rad.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:42</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a49c6f9f297f6b78563fc144ba086b9f1"><div class="ttname"><a href="polynomialsz_8h.html#a49c6f9f297f6b78563fc144ba086b9f1">bhaskaraSimplify</a></div><div class="ttdeci">char * bhaskaraSimplify(int aexp, int den, int b, double delta, double *rootsPair)</div><div class="ttdoc">Gera uma representação simbólica fatorada das raízes de um polinômio do segundo grau.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:239</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a50bc1f5d462251a36e76b04ed74d5447"><div class="ttname"><a href="polynomialsz_8h.html#a50bc1f5d462251a36e76b04ed74d5447">printFac</a></div><div class="ttdeci">void printFac(polynomial p)</div><div class="ttdoc">Imprime a fatoração de um polinômio ou exibe a mensagem apropriada com base no tipo de fatoração que ...</div><div class="ttdef"><b>Definição</b> polynomialsz.c:556</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a575d628ed3a93a2ed150fb42296af44d"><div class="ttname"><a href="polynomialsz_8h.html#a575d628ed3a93a2ed150fb42296af44d">term</a></div><div class="ttdeci">struct sterm term</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a69c9ea71eed7589ce8e9979b68bbea6b"><div class="ttname"><a href="polynomialsz_8h.html#a69c9ea71eed7589ce8e9979b68bbea6b">pCreate</a></div><div class="ttdeci">polynomial pCreate(int num_of_terms)</div><div class="ttdoc">Cria e retorna um polinômio com um número especificado de termos.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:55</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a797fa934e9e23fd2a700827339a18661"><div class="ttname"><a href="polynomialsz_8h.html#a797fa934e9e23fd2a700827339a18661">bhaskara</a></div><div class="ttdeci">void bhaskara(polynomial p)</div><div class="ttdoc">Calcula e imprime a fatoração de um polinômio de segundo grau usando a fórmula de Bhaskara (quadrátic...</div><div class="ttdef"><b>Definição</b> polynomialsz.c:351</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a7a4c9c50182fde091bea11c26712e41c"><div class="ttname"><a href="polynomialsz_8h.html#a7a4c9c50182fde091bea11c26712e41c">pFree</a></div><div class="ttdeci">void pFree(polynomial p)</div><div class="ttdoc">Ao contrário de printFac(), esta função também desaloca a memória dos termos de p usando free(p....</div><div class="ttdef"><b>Definição</b> polynomialsz.c:635</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_a7f7ab4213c2175b0f3f4e7c7a0ede0d4"><div class="ttname"><a href="polynomialsz_8h.html#a7f7ab4213c2175b0f3f4e7c7a0ede0d4">nrt</a></div><div class="ttdeci">double nrt(double rad, int ind)</div><div class="ttdoc">Retorna a base de uma potência com expoente igual a ind, que é igual a rad.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:33</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_aa0f3539fed923511c6386c9bcd4214aa"><div class="ttname"><a href="polynomialsz_8h.html#aa0f3539fed923511c6386c9bcd4214aa">setTerms</a></div><div class="ttdeci">term setTerms(int coef, int exp)</div><div class="ttdoc">Cria e define o coeficiente e o expoente de um termo polinomial.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:22</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_ac7fcd11482732d3fcaeaf1c6688a5f96"><div class="ttname"><a href="polynomialsz_8h.html#ac7fcd11482732d3fcaeaf1c6688a5f96">briot_ruffini</a></div><div class="ttdeci">void briot_ruffini(polynomial p)</div><div class="ttdoc">Tenta fatorar um polinômio usando o Teorema das Raízes Racionais e divisão sintética.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:433</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_ac92b3863e640384c7e86b27afe9ecff2"><div class="ttname"><a href="polynomialsz_8h.html#ac92b3863e640384c7e86b27afe9ecff2">complexp</a></div><div class="ttdeci">void complexp(polynomial p)</div><div class="ttdoc">Imprime todas as raízes complexas não reais de um polinômio, assumindo módulo unitário.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:150</div></div>
+<div class="ttc" id="apolynomialsz_8h_html_af23d9d3b957105f099417c29e1404852"><div class="ttname"><a href="polynomialsz_8h.html#af23d9d3b957105f099417c29e1404852">gcd</a></div><div class="ttdeci">int gcd(int a, int b)</div><div class="ttdoc">Calcula o maior divisor comum (MDC) de dois inteiros usando o algoritmo de Euclides.</div><div class="ttdef"><b>Definição</b> polynomialsz.c:94</div></div>
+<div class="ttc" id="astructpolynomial_html"><div class="ttname"><a href="structpolynomial.html">polynomial</a></div><div class="ttdoc">Representa um polinômio como um array de termos.</div></div>
+<div class="ttc" id="astructspolynomial_html"><div class="ttname"><a href="structspolynomial.html">spolynomial</a></div><div class="ttdef"><b>Definição</b> polynomialsz.h:56</div></div>
+<div class="ttc" id="astructspolynomial_html_a1a2442140467cb2c35ef91cf760850fe"><div class="ttname"><a href="structspolynomial.html#a1a2442140467cb2c35ef91cf760850fe">spolynomial::num_of_terms</a></div><div class="ttdeci">int num_of_terms</div><div class="ttdef"><b>Definição</b> polynomialsz.h:58</div></div>
+<div class="ttc" id="astructspolynomial_html_a375ec080d97a84145d12e0f7920a5d94"><div class="ttname"><a href="structspolynomial.html#a375ec080d97a84145d12e0f7920a5d94">spolynomial::terms</a></div><div class="ttdeci">term * terms</div><div class="ttdef"><b>Definição</b> polynomialsz.h:57</div></div>
+<div class="ttc" id="astructsterm_html"><div class="ttname"><a href="structsterm.html">sterm</a></div><div class="ttdef"><b>Definição</b> polynomialsz.h:45</div></div>
+<div class="ttc" id="astructsterm_html_a71f069c07c811581bd3cf6ba24752aac"><div class="ttname"><a href="structsterm.html#a71f069c07c811581bd3cf6ba24752aac">sterm::coefficient</a></div><div class="ttdeci">int coefficient</div><div class="ttdef"><b>Definição</b> polynomialsz.h:46</div></div>
+<div class="ttc" id="astructsterm_html_ab15e6c2526a1d35231ff95f2eb782d84"><div class="ttname"><a href="structsterm.html#ab15e6c2526a1d35231ff95f2eb782d84">sterm::exponent</a></div><div class="ttdeci">int exponent</div><div class="ttdef"><b>Definição</b> polynomialsz.h:47</div></div>
+<div class="ttc" id="astructterm_html"><div class="ttname"><a href="structterm.html">term</a></div><div class="ttdoc">Representa um único termo de um polinômio.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>
