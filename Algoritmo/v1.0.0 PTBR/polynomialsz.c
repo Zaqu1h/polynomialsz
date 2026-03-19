@@ -2,20 +2,74 @@
 
 /**
  * @file polynomialsz.c
- * @brief Arquivo fonte para as funcionalidades de fatoração polinomial.
+ * @brief Implementação das funcionalidades de fatoração de polinômios.
  *
- * O arquivo implementa a lógica para a fatoração de polinômios, incluindo
- * algoritmos como Briot-Ruffini, o Critério de Eisenstein e fatoração por
- * diferença de potência. Utiliza estrutura de dados e declarações definidas
- * no arquivo header correspondente (polynomialsz.h).
+ * Este arquivo implementa a lógica principal para fatoração de polinômios, incluindo:
+ *  - Método de Aberth-Ehrlich (aproximação numérica de raízes);
+ *  - Fórmula de Bhaskara (equações quadráticas);
+ *  - Briot-Ruffini (divisão sintética e teorema das raízes racionais);
+ *  - Fatoração de polinômios ciclotômicos.
+ *
+ * O algoritmo trabalha com polinômios de coeficientes inteiros.
+ *
+ * @author Isaque Passos
+ * @version 1.1.0
+ * @date 2026
+ *
+ * @note Versão 1.0.0: Implementação inicial.
+ * @note Versão 1.1.0: Adicionado método de Aberth e outras melhorias.
  */
 
-/**
- * @brief Variável simbólica para representar raízes e expressões polinomiais.
- *
- * É inicializada, por padrão, como "x", mas pode ser alterada quando desejado.
- */
 char var = 'x';
+int degreeX = 0;
+int sol = 0;
+int divider = 0;
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <complex.h>
+
+typedef struct sterm {
+
+    int coefficient;
+    int exponent;
+} term;
+
+typedef struct spolynomial {
+
+    term *terms;
+    int numTerms;
+} polynomial;
+
+int gcd(int a, int b);
+int indOfRoot(int rad, double rt);
+
+double nrt(double rad, int ind);
+
+term setTerms(int coef, int exp);
+polynomial pCreate(int numTerms);
+
+void pPrint(polynomial p);
+void printFac(polynomial p);
+void pFree(polynomial p);
+void divideX(polynomial p);
+void divideGCD(polynomial p);
+void removeZeros(polynomial* p);
+void fac(polynomial p);
+
+void bhaskara(polynomial p);
+void briotRuffini(polynomial p, int maxNum);
+void cyclotomicFac(polynomial p);
+void aberth(polynomial p);
+
+char* bhaskaraSimplify(int aexp, int den, int b, double delta, int absDelta, double* rootsPair);
+char* rationalSqRoots(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot);
+char* irrationalSqRoots(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot);
+char* intSrPositiveDelta(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot);
+char* intSrNegativeDelta(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot);
+char* floatSrPositiveDelta(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot);
+char* floatSrNegativeDelta(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot);
 
 //-----------------------------------------------------------------------------
 
@@ -43,7 +97,7 @@ int indOfRoot(int rad, double rt){
 
     int ind = 1;
 
-    while((int)pow(rt, ind) != (fabs)(rad)){
+    while((int)pow(rt, ind) != (fabs)(rad) && ind != rad){
         ind++;
     }
 
@@ -52,20 +106,21 @@ int indOfRoot(int rad, double rt){
 
 //-----------------------------------------------------------------------------
 
-polynomial pCreate(int num_of_terms) {
+polynomial pCreate(int numTerms) {
 
     int j = 0;
+
 	polynomial p;
-	p.num_of_terms = num_of_terms;
-	p.terms = (term*)malloc(num_of_terms * sizeof(term));
+	p.numTerms = numTerms;
+	p.terms = (term*)malloc(numTerms * sizeof(term));
 
 	if(p.terms == NULL){
 
-        printf("\nErro ao alocar memória.");
-        return p;
+        printf("\nError allocating memory.");
+        exit(1);
 	}
 
-	for(int i = num_of_terms-1; i >= 0; i--){
+	for(int i = numTerms-1; i >= 0; i--){
 
         p.terms[j].coefficient = 0;
         p.terms[j].exponent = i;
@@ -79,14 +134,13 @@ polynomial pCreate(int num_of_terms) {
 
 void pPrint(polynomial p){
 
-    printf("(%i%c^%i", p.terms[0].coefficient, var, p.terms[0].exponent);
+    printf("%i%c^%i", p.terms[0].coefficient, var, p.terms[0].exponent);
 
-    for(int i = 1; i < p.num_of_terms; i++){
-
-        printf("%c%i%c^%i", (p.terms[i].coefficient >= 0) ? '+' : '-', (abs)(p.terms[i].coefficient), var, p.terms[i].exponent);
+    for(int i = 1; i < p.numTerms; i++){
+        printf(" %c %i%c^%i",
+            (p.terms[i].coefficient >= 0) ? '+' : '-',
+            (abs)(p.terms[i].coefficient), var, p.terms[i].exponent);
     }
-
-    printf(")\n\n");
 }
 
 //-----------------------------------------------------------------------------
@@ -98,249 +152,106 @@ int gcd(int a, int b) {
 
     return gcd(b, a % b);
 }
-//-----------------------------------------------------------------------------
-
-int isPrime(int num){
-
-    if(num > 41)
-        return 0;
-
-    int i = 2;
-    int pcont = 0;
-    int dcont = 0;
-
-    for(i = 2; i < 180 && pcont != num; i++){
-
-        for(int k = 1; k <= i; k++){
-
-            dcont = (i % k == 0) ? dcont + 1 : dcont;
-        }
-        pcont = (dcont == 2) ? pcont + 1 : pcont;
-        dcont = 0;
-    }
-
-    return i - 1;
-}
 
 //-----------------------------------------------------------------------------
 
-int eisenstein(polynomial x, double p){
+void cyclotomicFac(polynomial p) {
 
-    int irr = 1;
+    int grau = p.terms[0].exponent;
 
-    for(int i = 1; i < x.num_of_terms; i++){
+    int countRaizes = grau + 1;
 
-        irr = (x.terms[i].coefficient % (int)p == 0) ? irr * 1 : 0;
-    }
+    if ((countRaizes % 2 == 0)) {
 
-    if(x.terms[x.num_of_terms - 1].coefficient % (int)pow(p, 2) != 0)
-        irr *= 1;
-    else
-        irr = 0;
-
-
-    if(irr == 1)
-        return 1;
-    else
-        return -1;
-}
-
-//-----------------------------------------------------------------------------
-
-void complexp(polynomial p) {
-
-    double angle = 0;
-    int numerator = 0;
-    int den = 1;
-
-    for(int l = 0; l < p.num_of_terms; l++){
-
-        den *= p.terms[l].coefficient;
-    }
-
-    int degree = (den == 1) ? p.num_of_terms : p.terms[0].exponent;
-
-    int total_roots = (degree % 2 == 0) ? degree - 1 : degree;
-
-    if(den != 1) total_roots++;
-
-    int common_divisor = 0;
-
-    if (degree % 2 == 0) {
         printf("(%c + 1)", var);
     }
 
-    if (den == 1){
+    for (int k = 1; k <= grau; k++) {
 
-        for (int k = 1; k <= total_roots / 2; k++) {
+        if (k % countRaizes == 0) continue;
 
-            den = degree;
-            angle = 2 * M_PI * k / degree;
-            numerator = 2 * k;
-            common_divisor = gcd(numerator, den);
+        int conjugadaK = countRaizes - k;
 
-            numerator /= common_divisor;
-            den /= common_divisor;
+        if (k >= conjugadaK) continue;
 
-            char angle_str[50];
+        int num = 2 * k;
+        int den = countRaizes;
+        int divisor = gcd(num, den);
 
-            if (den == 1){
-                snprintf(angle_str, 50, "%i*pi", numerator);
-            }
-            else if (numerator == 1){
-                snprintf(angle_str, 50, "*pi/%i", den);
-            }
-            else{
-                snprintf(angle_str, 50, "%i*pi/%i", numerator, den);
-            }
+        num /= divisor;
+        den /= divisor;
 
-            if(den == 2 && numerator == 1){
+        if (num == 1)
+            printf("(%c - Exp[i*Pi/%d])", var, den);
+        else
+            printf("(%c - Exp[%d*i*Pi/%d])", var, num, den);
 
-                printf("(%c - i)", var);
-                printf("(%c + i)", var);
-                return;
-            }
-
-            printf("(%c - e^{i%s})", var, angle_str);
-            printf("(%c - e^{-i%s})", var, angle_str);
-        }
-    }
-    else{
-
-        for (int k = 0; k < p.terms[0].exponent; k++) {
-
-            den = degree;
-            numerator = (2 * k) + 1;
-            common_divisor = gcd(numerator, den);
-
-            numerator /= common_divisor;
-            den /= common_divisor;
-
-            char angle_str[50];
-
-            if (den == 1){
-                snprintf(angle_str, 50, "%i*pi", numerator);
-            }
-            else if (numerator == 1){
-                snprintf(angle_str, 50, "*pi/%i", den);
-            }
-            else{
-                snprintf(angle_str, 50, "%i*pi/%i", numerator, den);
-            }
-
-            if(numerator != den) printf("(%c - e^{i%s})", var, angle_str);
-            else printf("(%c + 1)", var);
-        }
+        if (num == 1)
+            printf("(%c - Exp[-i*Pi/%d])", var, den);
+        else
+            printf("(%c - Exp[-%d*i*Pi/%d])", var, num, den);
     }
 }
 
 //-----------------------------------------------------------------------------
 
-char* bhaskaraSimplify(int aexp, int den, int b, double delta, double* rootsPair){
+char* intSrPositiveDelta(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot){
 
-    int absDelta = (int)(fabs)(delta);
-    char* bSimplify = malloc(sizeof(char) * 60);
-    char powerRoot[3] = "";
+    int numeratorSum = (-b + (int)sqrt(absDelta));
+    int numeratorSub = (-b - (int)sqrt(absDelta));
+    unsigned char divisible = (numeratorSum % den == 0 && numeratorSub % den == 0) ? 1 : 0;
 
-    if(aexp == 4){
+    if(divisible){
 
-        snprintf(powerRoot, 3, "^2");
-    }
-
-    if((int)sqrt(absDelta) * (int)sqrt(absDelta) == absDelta){
-
-        if(delta >= 0){
-
-            if((-b + (int)sqrt(absDelta)) % den == 0){
-
-                snprintf(bSimplify, 60, "(%c%s %c %i)(%c%s %c %i)", var, powerRoot,
-               (-b + absDelta >= 0) ? '-' : '+', (-b + (int)sqrt(absDelta))/den, var, powerRoot,
-               (-b + absDelta >= 0) ? '+' : '-', (-b + (int)sqrt(absDelta))/den);
-            }
-            else if((-b + (int)sqrt(absDelta)) % den != 0 && b != 0){
-
-                snprintf(bSimplify, 60, "(%c%s %c (%i + %i)/%i)(%c%s %c (%i - %i)/%i)", var, powerRoot,
-               (-b + absDelta >= 0) ? '-' : '+', -b, (int)sqrt(absDelta), den, var, powerRoot,
-               (-b + absDelta >= 0) ? '+' : '-', -b, (int)sqrt(absDelta), den);
-            }
-            else{
-
-                snprintf(bSimplify, 60, "(%c%s %c (%i/%i))(%c%s %c (%i/i))", var, powerRoot,
-               (-b + absDelta >= 0) ? '-' : '+', (int)sqrt(absDelta), den, var, powerRoot,
-               (-b + absDelta >= 0) ? '+' : '-', (int)sqrt(absDelta), den);
-            }
+            snprintf(bSimplify, 100, "(%c%s %c %i)(%c%s %c %i)", var, powerRoot,
+            ((-b + sqrt(absDelta))/den >= 0) ? '-' : '+', (abs)(numeratorSum)/den, var, powerRoot,
+            ((-b - sqrt(absDelta))/den >= 0) ? '-' : '+', (abs)(numeratorSub)/den);
         }
+
+        else if(!divisible && b != 0){
+
+            snprintf(bSimplify, 100, "(%c%s %c (%i + %i)/%i)(%c%s %c (%i - %i)/%i)", var, powerRoot,
+            (-b + sqrt(absDelta) >= 0) ? '-' : '+', -b, (int)sqrt(absDelta), den, var, powerRoot,
+            (-b + sqrt(absDelta) >= 0) ? '+' : '-', -b, (int)sqrt(absDelta), den);
+        }
+
         else{
-            if(-b % den == 0 && (int)sqrt(absDelta) % den == 0 && (int)sqrt(absDelta) / den != 1 && b != 0){
 
-                snprintf(bSimplify, 60, "(%c%s %c (%i + i%i))(%c%s %c (%i - i%i))", var, powerRoot,
-               (-b + absDelta >= 0) ? '-' : '+', -b/den, (int)sqrt(absDelta)/den, var, powerRoot,
-               (-b + absDelta >= 0) ? '+' : '-', -b/den, (int)sqrt(absDelta)/den);
-            }
-            else if(-b % den == 0 && (int)sqrt(absDelta) % den == 0 && b != 0){
-
-                snprintf(bSimplify, 60, "(%c%s %c (%i + i))(%c%s %c (%i - i))", var, powerRoot,
-               (-b + absDelta >= 0) ? '-' : '+', -b/den, var, powerRoot,
-               (-b + absDelta >= 0) ? '+' : '-', -b/den);
-            }
-
-            else if(-b % den != 0 || (int)sqrt(absDelta) % den != 0 && b != 0){
-
-                snprintf(bSimplify, 60, "(%c%s %c (%i + i%i)/%i)(%c%s %c (%i - i%i)/%i)", var, powerRoot,
-               (-b + absDelta >= 0) ? '-' : '+', -b, (int)sqrt(absDelta), den, var, powerRoot,
-               (-b + absDelta >= 0) ? '+' : '-', -b, (int)sqrt(absDelta), den);
-            }
-            else if((int)sqrt(absDelta) % den == 0 && (int)sqrt(absDelta) / den != 1 && b == 0){
-
-                snprintf(bSimplify, 60, "(%c%s %c i%i)(%c%s %c i%i)", var, powerRoot,
-               (-b + absDelta >= 0) ? '-' : '+', (int)sqrt(absDelta)/den, var, powerRoot,
-               (-b + absDelta >= 0) ? '+' : '-', (int)sqrt(absDelta)/den);
-            }
-            else if((int)sqrt(absDelta) % den == 0 && b == 0){
-
-                snprintf(bSimplify, 60, "(%c%s %c i)(%c%s %c i)", var, powerRoot,
-               (-b + absDelta >= 0) ? '-' : '+', var, powerRoot,
-               (-b + absDelta >= 0) ? '+' : '-');
-            }
-            else{
-
-                snprintf(bSimplify, 60, "(%c%s %c i%i/%i)(%c%s %c i%i/%i)", var, powerRoot,
-               (-b + absDelta >= 0) ? '-' : '+', (int)sqrt(absDelta), den, var, powerRoot,
-               (-b + absDelta >= 0) ? '+' : '-', (int)sqrt(absDelta), den);
-            }
+            snprintf(bSimplify, 100, "(%c%s %c (%i/%i))(%c%s %c (%i/%i))", var, powerRoot,
+            (-b + sqrt(absDelta) >= 0) ? '-' : '+', (int)sqrt(absDelta), den, var, powerRoot,
+            (-b + sqrt(absDelta) >= 0) ? '+' : '-', (int)sqrt(absDelta), den);
         }
+
+
+    return bSimplify;
+}
+
+//-----------------------------------------------------------------------------
+
+char* intSrNegativeDelta(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot){
+
+    if(-b % den == 0 && (int)sqrt(absDelta) % den == 0 && (int)sqrt(absDelta) / den != 1 && b != 0){
+        snprintf(bSimplify, 100, "(%c%s - (%i + %ii))(%c%s - (%i - %ii))", var, powerRoot,
+                -b/den, (int)sqrt(absDelta)/den, var, powerRoot, -b/den, (int)sqrt(absDelta)/den);
+    }
+    else if(-b % den == 0 && (int)sqrt(absDelta) % den == 0 && b != 0){
+        snprintf(bSimplify, 100, "(%c%s - (%i + i))(%c%s - (%i - i))", var, powerRoot,
+                -b/den, var, powerRoot, -b/den);
+    }
+    else if((-b % den != 0 || (int)sqrt(absDelta) % den != 0) && b != 0){
+        snprintf(bSimplify, 100, "(%c%s - (%i + %ii)/%i)(%c%s - (%i - %ii)/%i)", var, powerRoot,
+                -b, (int)sqrt(absDelta), den, var, powerRoot, -b, (int)sqrt(absDelta), den);
+    }
+    else if((int)sqrt(absDelta) % den == 0 && (int)sqrt(absDelta) / den != 1 && b == 0){
+        snprintf(bSimplify, 100, "(%c%s - %ii)(%c%s + %ii)", var, powerRoot,
+                (int)sqrt(absDelta)/den, var, powerRoot, (int)sqrt(absDelta)/den);
+    }
+    else if((int)sqrt(absDelta) % den == 0 && b == 0){
+        snprintf(bSimplify, 100, "(%c%s - i)(%c%s + i)", var, powerRoot, var, powerRoot);
     }
     else{
-        if(delta >= 0){
-
-            if(b != 0){
-
-                snprintf(bSimplify, 60, "(%c%s %c ((%i + %i^{1/2})/%i)) (%c%s %c ((%i - %i^{1/2})/%i))", var, powerRoot,
-               (rootsPair[0] >= 0) ? '-' : '+', -b, absDelta, den, var, powerRoot,
-               (rootsPair[1] >= 0) ? '+' : '-', -b, absDelta, den);
-            }
-            else{
-
-                snprintf(bSimplify, 60, "(%c%s %c (%i^{1/2})/%i) (%c%s %c (%i^{1/2})/%i)", var, powerRoot,
-               (rootsPair[0] >= 0) ? '-' : '+', absDelta, den, var, powerRoot,
-               (rootsPair[1] >= 0) ? '+' : '-', absDelta, den);
-            }
-        }
-        else{
-
-            if(b != 0){
-
-                snprintf(bSimplify, 60, "(%c%s %c ((%i + i%i^{1/2})/%i)) (%c%s %c ((%i - i%i^{1/2})/%i))", var, powerRoot,
-               (rootsPair[0] >= 0) ? '-' : '+', -b, absDelta, den, var, powerRoot,
-               (rootsPair[1] >= 0) ? '+' : '-', -b, absDelta, den);
-            }
-            else{
-
-                snprintf(bSimplify, 60, "(%c%s %c (i%i^{1/2})/%i) (%c%s %c (i%i^{1/2})/%i)", var, powerRoot,
-               (rootsPair[0] >= 0) ? '-' : '+', absDelta, den, var, powerRoot,
-               (rootsPair[1] >= 0) ? '+' : '-', absDelta, den);
-            }
-        }
+        snprintf(bSimplify, 100, "(%c%s - %ii/%i)(%c%s + %ii/%i)", var, powerRoot,
+                (int)sqrt(absDelta), den, var, powerRoot, (int)sqrt(absDelta), den);
     }
 
     return bSimplify;
@@ -348,26 +259,120 @@ char* bhaskaraSimplify(int aexp, int den, int b, double delta, double* rootsPair
 
 //-----------------------------------------------------------------------------
 
+char* floatSrPositiveDelta(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot){
+
+    if(b != 0){
+        snprintf(bSimplify, 100, "(%c%s %c ((%i + Sqrt[%i])/%i)) (%c%s %c ((%i - Sqrt[%i])/%i))", var, powerRoot,
+               (-b + sqrt(absDelta) >= 0) ? '-' : '+', -b, absDelta, den, var, powerRoot,
+               (-b - sqrt(absDelta) >= 0) ? '+' : '-', -b, absDelta, den);
+    }
+    else{
+        snprintf(bSimplify, 100, "(%c%s %c (Sqrt[%i]/%i)) (%c%s %c (Sqrt[%i]/%i))", var, powerRoot,
+               (-b + sqrt(absDelta) >= 0) ? '-' : '+', absDelta, den, var, powerRoot,
+               (-b - sqrt(absDelta) >= 0) ? '+' : '-', absDelta, den);
+    }
+
+    return bSimplify;
+}
+
+//-----------------------------------------------------------------------------
+
+char* floatSrNegativeDelta(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot){
+
+    if(b != 0){
+        snprintf(bSimplify, 100, "(%c%s %c ((%i + iSqrt[%i])/%i)) (%c%s %c ((%i - iSqrt[%i])/%i))", var, powerRoot,
+               (-b + sqrt(absDelta) >= 0) ? '-' : '+', -b, absDelta, den, var, powerRoot,
+               (-b - sqrt(absDelta) >= 0) ? '+' : '-', -b, absDelta, den);
+    }
+    else{
+        snprintf(bSimplify, 100, "(%c%s %c (iSqrt[%i]/%i)) (%c%s %c (iSqrt[%i]/%i))", var, powerRoot,
+               (-b + sqrt(absDelta) >= 0) ? '-' : '+', absDelta, den, var, powerRoot,
+               (-b - sqrt(absDelta) >= 0) ? '+' : '-', absDelta, den);
+    }
+
+    return bSimplify;
+}
+
+//-----------------------------------------------------------------------------
+
+char* rationalSqRoots(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot){
+
+    if(delta >= 0)
+        return intSrPositiveDelta(aexp, den, b, delta, absDelta, bSimplify, powerRoot);
+
+    return intSrNegativeDelta(aexp, den, b, delta, absDelta, bSimplify, powerRoot);
+}
+
+//-----------------------------------------------------------------------------
+
+char* irrationalSqRoots(int aexp, int den, int b, double delta, int absDelta, char* bSimplify, char* powerRoot){
+
+    if(delta >= 0){
+
+        return floatSrPositiveDelta(aexp, den, b, delta, absDelta, bSimplify, powerRoot);
+    }
+
+    return floatSrNegativeDelta(aexp, den, b, delta, absDelta, bSimplify, powerRoot);
+}
+
+//-----------------------------------------------------------------------------
+
+char* bhaskaraSimplify(int aexp, int den, int b, double delta, int absDelta, double* rootsPair){
+
+    char* bSimplify = malloc(sizeof(char) * 100);
+    char powerRoot[3] = "";
+    unsigned char perfectSquare = (round((int)sqrt(absDelta)) * round((int)sqrt(absDelta)) == absDelta) ? 1 : 0;
+
+    if(aexp == 4){
+
+        snprintf(powerRoot, 3, "^2");
+    }
+
+    if(perfectSquare){
+
+        return rationalSqRoots(aexp, den, b, delta, absDelta, bSimplify, powerRoot);
+    }
+    else{
+
+        return irrationalSqRoots(aexp, den, b, delta, absDelta, bSimplify, powerRoot);
+    }
+}
+
+//-----------------------------------------------------------------------------
+
 void bhaskara(polynomial p) {
 
     int aexp = p.terms[0].exponent;
-    int a = p.terms[0].coefficient;
-    int b = p.terms[1].coefficient;
-    int c = p.terms[2].coefficient;
 
-    int den = 2 * a;
+    int a = 0, b = 0, c = 0;
+
+    for (int i = 0; i < p.numTerms; i++) {
+
+        int expo = p.terms[i].exponent;
+        int coef = p.terms[i].coefficient;
+
+        if (i == 0)      a = coef;
+        else if (i == 1) b = coef;
+        else if (i == 2) c = coef;
+    }
+
+    int den = 2 * p.terms[0].coefficient;
+
     double delta = pow(b, 2) - (4 * a * c);
     double rootsPair[2] = {0, 0};
 
-    rootsPair[0] = (-b + (sqrt((fabs)(delta)))) / den;
-    rootsPair[1] = (-b - (sqrt((fabs)(delta)))) / den;
+    int absDelta = (int)(fabs)(delta);
+
+    rootsPair[0] = (-b + sqrt(absDelta)) / den;
+    rootsPair[1] = (-b - sqrt(absDelta)) / den;
 
     int asbRoot1 = (int)(fabs)(rootsPair[0]);
     int asbRoot2 = (int)(fabs)(rootsPair[1]);
 
-    char* bSimplify = bhaskaraSimplify(aexp, den, b, delta, rootsPair);
+    char* bSimplify = bhaskaraSimplify(aexp, den, b, delta, absDelta, rootsPair);
 
     int negRoot = (rootsPair[0] <= 0 || rootsPair[1] <= 0 || (aexp == 4 && delta >= 0)) ? 1 : -1;
+
 
     if(negRoot == 1){
 
@@ -375,15 +380,15 @@ void bhaskara(polynomial p) {
     }
     else if(aexp == 4){
 
-        printf("(%c%c%i)(%c%c%i)(%c%c%i)(%c%c%i)", var, (rootsPair[0] >= 0) ? '-' : '+', asbRoot1,
-                                                   var, (rootsPair[0] >= 0) ? '+' : '-', asbRoot1,
-                                                   var, (rootsPair[1] >= 0) ? '-' : '+', asbRoot2,
-                                                   var, (rootsPair[1] >= 0) ? '+' : '-', asbRoot2);
+        printf("(%c %c %i)(%c %c %i)(%c %c %i)(%c %c %i)", var, (-b + sqrt(absDelta) >= 0) ? '-' : '+', asbRoot1,
+                                                   var, (-b + sqrt(absDelta) >= 0) ? '+' : '-', asbRoot1,
+                                                   var, (-b - sqrt(absDelta) >= 0) ? '-' : '+', asbRoot2,
+                                                   var, (-b - sqrt(absDelta) >= 0) ? '+' : '-', asbRoot2);
     }
     else{
 
-        printf("(%c%c%i)(%c%c%i)", var, (rootsPair[0] >= 0) ? '-' : '+', asbRoot1,
-                                   var, (rootsPair[1] >= 0) ? '-' : '+', asbRoot2);
+        printf("(%c %c %i)(%c %c %i)", var, (-b + sqrt(absDelta) >= 0) ? '-' : '+', asbRoot1,
+                                   var, (-b - sqrt(absDelta) >= 0) ? '-' : '+', asbRoot2);
     }
 
     free(bSimplify);
@@ -391,105 +396,93 @@ void bhaskara(polynomial p) {
 
 //-----------------------------------------------------------------------------
 
-void powerDiffFactoring(polynomial p){
+void briotRuffini(polynomial p, int maxNum){
 
-    int i = p.terms[0].exponent - 1, even_num = 1;
-    int count = 1;
-    double a = (nrt(p.terms[1].coefficient, p.terms[0].exponent));
+    int step = 1, i = 0, r = 0, rq = 0, end_int = 0, rnum = 1, cont = 1;
+    int aexp = p.terms[0].exponent;
+    int numTermsATM = p.numTerms;
+    double ind = 1, stepf = 1;
 
-    printf("(%c%c%i)", var, (p.terms[1].coefficient < 0) ? '-' : '+', (int)a);
+    int *root = (int*)calloc(p.numTerms, sizeof(int));
 
-    if(p.terms[0].exponent % 2 == 0){
-        printf("(%c%c%i)", var, (p.terms[1].coefficient < 0) ? '+' : '-', (int)a);
-        even_num++;
-    }
+	while (i <= sqrt(maxNum) && aexp != r) {
 
-    if(p.terms[0].exponent < 2){
-        return;
-    }
+		step = p.terms[0].coefficient;
+        polynomial aux = pCreate(numTermsATM);
+        aux.terms[0] = setTerms(step, p.terms[0].exponent - 1);
 
-    printf("(%c^{%i}", var, (even_num == 2) ? --i : i);
+		for (int k = 1; k < numTermsATM; k++) {
 
-    while(i - even_num > 0){
-        printf(" %c %i%c^{%i}",
-               (p.terms[1].coefficient > 0 && i % 2 == 0) ? '-' : '+',
-               (even_num == 2) ? (int)(pow(a, ++count)) : (int)(pow(a, count++)),
-               var, i - even_num);
-
-        if(even_num == 2){
-            i = i - even_num;
-            count++;
+			step = i * step + p.terms[k].coefficient;
+			aux.terms[k] = setTerms(step, p.terms[k].exponent - 1);
         }
-        else i--;
+
+
+        if (step == 0) {
+
+            root[r] = i;
+            r++;
+
+            for(int j = 0; j < numTermsATM - 1; j++){
+
+                p.terms[j] = aux.terms[j];
+            }
+
+            numTermsATM--;
+        }
+        else i++;
+
+        free(aux.terms);
+	}
+
+	if (r < aexp) {
+
+		i = -(int)(sqrt(maxNum));
+
+		while (i != 0 && aexp != r) {
+
+            step = p.terms[0].coefficient;
+            polynomial aux = pCreate(numTermsATM);
+            aux.terms[0] = setTerms(step, p.terms[0].exponent - 1);
+
+            for (int k = 1; k < numTermsATM; k++) {
+
+                step = i * step + p.terms[k].coefficient;
+                aux.terms[k] = setTerms(step, p.terms[k].exponent - 1);
+            }
+
+            if (step == 0) {
+
+                root[r] = i;
+                r++;
+
+                for(int j = 0; j < numTermsATM - 1; j++){
+
+                    p.terms[j] = aux.terms[j];
+                }
+
+                numTermsATM--;
+            }
+            else i++;
+
+            free(aux.terms);
+        }
     }
-
-    printf(" + %i)", (int)(pow(a, p.terms[0].exponent - even_num)));
-
-    return;
-}
-
-//-----------------------------------------------------------------------------
-
-void briot_ruffini(polynomial p){
-
-    int max_num = 0, start = 1, i = 1, r = 1, rq = 0, end_int = 0, rnum = 1, rI = 1, cont = 1;
-    double ind = 1, startf = 1;
-
-    int *root = (int*)calloc(p.num_of_terms, sizeof(int));
-
-	for (int j = 1; j < p.num_of_terms; j++) {
-		max_num = (p.terms[j].coefficient > max_num) ? p.terms[j].coefficient : max_num;
-	}
-
-	while (i != max_num) {
-
-		start = i * 1 + p.terms[1].coefficient;
-
-		for (int k = 2; k < p.num_of_terms; k++) {
-			start = i * start + p.terms[k].coefficient;
-		}
-
-		if (start == 0) {
-			root[r] = i;
-			r++;
-		}
-
-		i++;
-	}
-
-	if (r < p.num_of_terms) {
-		i = -max_num;
-
-		while (i != 0) {
-			start = i * 1 + p.terms[1].coefficient;
-
-			for (int k = 2; k < p.num_of_terms; k++) {
-				start = i * start + p.terms[k].coefficient;
-			}
-
-			if (start == 0) {
-				root[r] = i;
-				r++;
-			}
-
-			i++;
-		}
-	}
 
 	end_int = r;
 
-	if (r < p.num_of_terms) {
+	if (r < aexp) {
 		rq = 2;
 
-		while (rq < max_num && r < p.num_of_terms) {
+		while (rq < maxNum && r < aexp) {
 
 			ind = sqrt(rq);
-			startf = ind + p.terms[1].coefficient;
+			stepf = ind + p.terms[1].coefficient;
 
-			for (int k = 2; k <= p.num_of_terms; k++) {
-				startf = ind * startf + p.terms[k].coefficient;
+			for (int k = 2; k <= p.numTerms; k++) {
+				stepf = ind * stepf + p.terms[k].coefficient;
 
-				if ((int)(startf * 1000) == 0) {
+				if ((int)(stepf * 1000) == 0) {
 					root[r] = rq;
 					root[r + 1] = rq;
 					r += 2;
@@ -507,45 +500,61 @@ void briot_ruffini(polynomial p){
 		}
 	}
 
-	int pr = 0;
+    float zeroAux = 0;
 
-	if (r != p.num_of_terms-1) {
-		for (int l = 1; root[l] != 0 && l < p.num_of_terms; l++) {
+	if (r > 0) {
+
+		for (int l = 0; ((root[l] == 0 && l == 0) || root[l] != 0) && l < p.numTerms; l++) {
 
 			if (l < end_int) {
-				printf("(%c%c%d)", var, ((root[l] > 0) ? '-' : '+'), abs(root[l]));
-				pr++;
+
+                if(root[l] == 0){
+
+                    zeroAux = 1.5;
+
+                    printf("%c", var);
+                }
+                else{
+                    printf("(%c %c %i)", var, ((root[l] > 0) ? '-' : '+'), abs(root[l]));
+                }
 			}
 			else if (l >= end_int && p.terms[0].exponent != 3) {
-				printf("(%c + %d^{1/2})(%c - %d^{1/2})", var, root[l], var, root[l]);
+				printf("(%c^2 - %i)", var, root[l]);
 				l++;
-				pr++;
 			}
-			if (rq > 0 && p.terms[0].exponent % 2 != 0 && p.terms[0].exponent < 6 && (p.terms[p.num_of_terms - 1].coefficient >= 0)){
+			if (rq > 0 && p.terms[0].exponent % 2 == 0 && p.terms[0].exponent < 6){
 
-                int px = (p.terms[0].exponent == 3) ? p.terms[1].coefficient + root[1] : p.terms[3].coefficient / -root[1];
-                int qx = (p.terms[0].exponent == 3) ? p.terms[2].coefficient + px*root[1] : p.terms[5].coefficient / -root[1];
+                p.numTerms--;
+                aexp = p.terms[0].exponent;
+
+                if(zeroAux != 1.5) zeroAux = root[0];
+                if(p.terms[aexp].coefficient == 0) p.terms[aexp].coefficient++;
 
                 polynomial aux = pCreate(3);
-                aux.terms[0] = setTerms(1, p.terms[0].exponent - 1);
-                aux.terms[1] = setTerms(px, p.terms[0].exponent / 2);
-                aux.terms[2] = setTerms(qx, 0);
+
+                int indDiv = (aexp == 4) ? 2 : 1;
+
+                aux.terms[0] = setTerms(1, p.terms[0].exponent);
+                aux.terms[1] = setTerms(p.terms[indDiv].coefficient, p.terms[indDiv].exponent);
+                aux.terms[2] = setTerms(p.terms[indDiv*2].coefficient, p.terms[indDiv*2].exponent);
+
+                printf("(");
+                pPrint(aux);
+                printf(") = ");
+
+                if(zeroAux == root[0]) printf("(%c %c %i)", var, ((root[0] > 0) ? '-' : '+'), abs(root[0]));
+                else printf("%c", var);
 
                 bhaskara(aux);
-                printf("\n\n");
+                sol = 1;
+                r = p.terms[0].exponent;
+
                 return;
 			}
 		}
 	}
 
-    if(pr == 0){
-
-        setlocale(LC_ALL, "Portuguese");
-        printf("Não é possível realizar uma fatoração não-imaginária e/ou que não existem raízes representáveis por radicais ou inteiros para o polinômio\n\n");
-
-        free(root);
-        return;
-    }
+	if(r == aexp) sol = 1;
 
     free(root);
     return;
@@ -553,147 +562,293 @@ void briot_ruffini(polynomial p){
 
 //-----------------------------------------------------------------------------
 
-void printFac(polynomial p) {
+void removeZeros(polynomial *p) {
 
-    int check_coefficient = (p.num_of_terms > 2 && p.terms[p.num_of_terms - 1].coefficient == 1) ? 1 : 0;
+    if (p == NULL || p->terms == NULL || p->numTerms == 0) return;
 
-    for (int j = 0; j < p.num_of_terms; j++) {
-        check_coefficient = ((p.terms[j].coefficient) == -1) ? (check_coefficient + 2) : check_coefficient;
-        check_coefficient = ((p.terms[j].coefficient) == 1) ? (check_coefficient * check_coefficient) : check_coefficient;
-    }
+    int indexWrite = 0;
 
-    int irrdcble = 0;
+    for (int indexRead = 0; indexRead < p->numTerms; indexRead++) {
+        if (p->terms[indexRead].coefficient != 0) {
+            if (indexWrite != indexRead) {
 
-    for (int i = 1; i < 42 && irrdcble != 1; i++) {
-        irrdcble = eisenstein(p, isPrime(i));
-    }
-
-    /*
-     * Essa condicional checa se o polinômio condiz com um dos dois critérios:
-     *
-     * 1. É irredutível, tem cinco ou mais termos e satisfaz um dos casos:
-     *    - Tem maior grau par, e o termo constante (último coeficiente) é positivo.
-     *    - Tem grau ímpar, e o termo constante é negativo.
-     *
-     * 2. Não é irredutível (irrdcble == -1), tem 5 ou mais termos, e se check_coefficient for maior que 1.
-     *         Isso implica que o polinômio talvez não atenda a uma forma simples de fatoração ou a um padrão de progressão.
-     *
-     * Se qualquer uma dessas condições for atendida, a função imprime uma mensagem indicando que
-     * não é possível realizar uma fatoração não-imaginária e/ou que não existem raízes
-     * representáveis por radicais ou inteiros para o polinômio, e então a função retorna.
-     */
-    if (irrdcble == 1 && p.num_of_terms >= 5 && ((p.num_of_terms % 2 == 0 && p.terms[p.num_of_terms - 1].coefficient > 0)
-        || p.num_of_terms % 2 != 0 && p.terms[p.num_of_terms - 1].coefficient < 0) || irrdcble == -1 && p.num_of_terms >= 5 && check_coefficient > 1){
-
-        setlocale(LC_ALL, "Portuguese");
-        printf("Não é possível realizar uma fatoração não-imaginária e/ou que não existem raízes representáveis por radicais ou inteiros para o polinômio\n\n");
-
-        return;
-    } else {
-        // Lida com casos de polinômios quadráticos
-        if (p.num_of_terms == 2 && p.terms[0].exponent == indOfRoot(p.terms[1].coefficient, (nrt(p.terms[1].coefficient, p.terms[0].exponent)))) {
-
-            if ((p.terms[1].coefficient < 0 && p.terms[0].exponent % 2 == 0) || p.terms[0].exponent % 2 != 0) {
-
-                // Aplica a fatoração por diferença de potência
-                powerDiffFactoring(p);
-
-                // Aplica a fatoração complexa caso precise
-                if (check_coefficient == 1) complexp(p);
-
-                printf(";\n\n");
-                return;
+                p->terms[indexWrite] = p->terms[indexRead];
             }
+
+            indexWrite++;
+        }
+    }
+
+    if (indexWrite == p->numTerms) return;
+
+    if (indexWrite == 0) {
+
+        free(p->terms);
+        p->terms = NULL;
+        p->numTerms = 0;
+        return;
+    }
+
+    term *temp = (term*)realloc(p->terms, indexWrite * sizeof(term));
+
+    if (temp != NULL) {
+
+        p->terms = temp;
+        p->numTerms = indexWrite;
+    } else {
+
+        p->numTerms = indexWrite;
+    }
+}
+
+//-----------------------------------------------------------------------------
+
+void fac(polynomial p) {
+
+    int qtZeros = 0;
+    int irrdcble = 0;
+    int maxNum = 0;
+    int maxExp = 0;
+    int binary = 1;
+    int sequence = 1;
+    int maxCoefOne = 1;
+
+    sol = 0;
+
+    for (int i = 0; i < p.numTerms; i++) {
+
+        binary *= p.terms[i].exponent;
+    }
+
+    if (binary != 0){
+
+        divideX(p);
+        return;
+    }
+
+    divideGCD(p);
+
+    for (int j = 0; j < p.numTerms; j++) {
+
+        if (j > 0 && p.terms[j-1].exponent != p.terms[j].exponent + 1) {
+
+            maxCoefOne = 0;
+            sequence = 0;
         }
 
-        // Aplica o método de Bhaskara se o maior grau do polinômio for par e possuir menos que três termos
-        if (p.terms[0].exponent % 2 == 0 && p.num_of_terms < 5 && p.terms[1].exponent != 3) {
+        maxCoefOne = ((abs)(p.terms[j].coefficient) * maxCoefOne);
 
-            bhaskara(p);
+		maxNum = (abs(p.terms[j].coefficient) > abs(maxNum)) ? abs(p.terms[j].coefficient) : abs(maxNum);
+		maxExp = (p.terms[j].exponent > maxExp) ? p.terms[j].exponent : maxExp;
+    }
 
-            printf(";\n\n");
+    maxCoefOne = (abs)(maxCoefOne);
+
+    for (int i = 0; i < p.numTerms; i++){
+
+        if(p.terms[i].coefficient == 0) qtZeros++;
+    }
+
+    if(divider > 1 || divider < -1) printf("%i", divider);
+
+    if(degreeX != 0){
+
+        printf("%c^%d", var, degreeX);
+        degreeX = 0;
+
+        if(maxExp == 0){
+
+            printf("\n\n");
             return;
         }
+    }
 
-        // Aplica Briot-Ruffini (divisão sintética) caso o polinômio seja de coeficiente único
-        if (check_coefficient != 1) briot_ruffini(p);
+    if(p.terms[0].exponent % 2 == 0 && p.terms[0].exponent < 5 && p.terms[1].exponent % 2 == 0 && p.numTerms == 3) {
 
-        // Aplica a fatoração complexa caso precise
-        if (check_coefficient == 1){
+        bhaskara(p);
+        sol = 1;
+    }
+    if(sequence == 1 && maxCoefOne != 1 && sol == 0){
 
-            complexp(p);
-            printf(";\n\n");
-        }
+        briotRuffini(p, maxNum);
+    }
+    else if(maxCoefOne == 1){
 
-        printf(";\n\n");
+        cyclotomicFac(p);
+        sol = 1;
+        printf("\n\n");
         return;
     }
+    if(sol == 0){
+
+        aberth(p);
+    }
+
+    printf("\n\n");
+
+    return;
+}
+
+//-----------------------------------------------------------------------------
+
+void divideX(polynomial p) {
+
+    int minExp = p.terms[0].exponent;
+
+    for (int i = 1; i < p.numTerms; i++) {
+
+        if (p.terms[i].exponent < minExp) minExp = p.terms[i].exponent;
+    }
+
+    polynomial remainder = pCreate(p.numTerms);
+
+    for (int i = 0; i < p.numTerms; i++) {
+
+        remainder.terms[i] = setTerms(p.terms[i].coefficient, p.terms[i].exponent - minExp);
+    }
+
+    removeZeros(&remainder);
+
+    degreeX = minExp;
+
+    fac(remainder);
+
+    free(remainder.terms);
+}
+
+//-----------------------------------------------------------------------------
+
+void divideGCD(polynomial p){
+
+    divider = p.terms[0].coefficient;
+
+    for (int i = 1; i < p.numTerms; i++){
+
+        divider = gcd(divider, p.terms[i].coefficient);
+    }
+
+    for (int j = 0; j < p.numTerms; j++){
+
+        p.terms[j].coefficient /= divider;
+    }
+}
+
+//-----------------------------------------------------------------------------
+
+void aberth(polynomial p) {
+
+    int aexp = p.terms[0].exponent;
+    int converge = 0;
+    double R = 1.0, real = 0.0, imag = 0.0, val = 0.0, angle = 0.0;
+    double complex pVal = 0.0, pDer = 0.0, sum = 0.0, q = 0.0, adjustment = 0.0, newRoot = 0.0;
+    double *coef = NULL;
+    double complex *roots = NULL;
+
+    coef = (double*)calloc(aexp + 1, sizeof(double));
+
+    for (int i = 0; i < p.numTerms; i++) {
+
+        int exp = p.terms[i].exponent;
+
+        if (exp >= 0 && exp <= aexp) coef[aexp - exp] = p.terms[i].coefficient;
+    }
+
+    for (int i = 1; i <= aexp; i++) {
+
+        val = fabs(coef[i] / coef[0]);
+        if (val > R) R = val;
+    }
+
+    R += 1.0;
+
+    roots = malloc(aexp * sizeof(double complex));
+
+    for (int i = 0; i < aexp; i++) {
+
+        angle = 2.0 * M_PI * i / aexp;
+        roots[i] = R * (cos(angle) + I * sin(angle));
+    }
+
+    for (int iter = 0; iter < 50; iter++) {
+
+        converge = 1;
+
+        for (int i = 0; i < aexp; i++) {
+
+            pVal = coef[0];
+            pDer = coef[0] * aexp;
+
+            for (int j = 1; j < aexp; j++) {
+
+                pVal = pVal * roots[i] + coef[j];
+                pDer = pDer * roots[i] + coef[j] * (aexp - j);
+            }
+
+            pVal = pVal * roots[i] + coef[aexp];
+
+            sum = 0.0;
+
+            for (int j = 0; j < aexp; j++) {
+
+                if (j != i) sum += 1.0 / (roots[i] - roots[j]);
+            }
+
+            q = pVal / pDer;
+
+            adjustment = q / (1.0 - q * sum);
+
+            newRoot = roots[i] - adjustment;
+
+            if (cabs(newRoot - roots[i]) > 1e-12) converge = 0;
+
+            roots[i] = newRoot;
+        }
+
+        if (converge) break;
+    }
+
+    printf("(");
+
+    for (int i = 0; i < aexp; i++) {
+
+        real = creal(roots[i]);
+        imag = cimag(roots[i]);
+
+        if (fabs(real) < 1e-6) real = 0.0;
+        if (fabs(imag) < 1e-6) imag = 0.0;
+
+        if (imag == 0.0) printf("(%c %c %.6f)", var, (real >= 0) ? '-' : '+', fabs(real));
+        else if (real == 0.0) printf("(%c %c %.6fi)", var, (imag >= 0) ? '-' : '+', fabs(imag));
+        else printf("(%c - (%.6f %c %.6fi))", var, real, (imag >= 0) ? '+' : '-', fabs(imag));
+    }
+
+    printf(")");
+
+    free(coef);
+    free(roots);
+}
+
+//-----------------------------------------------------------------------------
+
+void printFac(polynomial p){
+
+    pPrint(p);
+    printf(" = ");
+
+    if(p.numTerms == 1 && p.terms[0].exponent == 0){
+
+        printf("%i\n\n", p.terms[0].coefficient);
+        return;
+    }
+
+    fac(p);
 }
 
 //-----------------------------------------------------------------------------
 
 void pFree(polynomial p) {
 
-    int check_coefficient = (p.num_of_terms > 2 && p.terms[p.num_of_terms - 1].coefficient == 1) ? 1 : 0;
-
-    for (int j = 0; j < p.num_of_terms; j++) {
-        check_coefficient = ((p.terms[j].coefficient) == -1) ? (check_coefficient + 2) : check_coefficient;
-        check_coefficient = ((p.terms[j].coefficient) == 1) ? (check_coefficient * check_coefficient) : check_coefficient;
-    }
-
-    int irrdcble = 0;
-
-    for (int i = 1; i < 42 && irrdcble != 1; i++) {
-        irrdcble = eisenstein(p, isPrime(i));
-    }
-
-    if (irrdcble == 1 && p.num_of_terms >= 5 && ((p.num_of_terms % 2 == 0 && p.terms[p.num_of_terms - 1].coefficient > 0)
-        || p.num_of_terms % 2 != 0 && p.terms[p.num_of_terms - 1].coefficient < 0) || irrdcble == -1 && p.num_of_terms >= 5 && check_coefficient > 1){
-
-        setlocale(LC_ALL, "Portuguese");
-        printf("Não é possível realizar uma fatoração não-imaginária e/ou que não existem raízes representáveis por radicais ou inteiros para o polinômio\n\n");
-        free(p.terms);
-
-        return;
-    } else {
-
-        if (p.num_of_terms == 2 && p.terms[0].exponent == indOfRoot(p.terms[1].coefficient, (nrt(p.terms[1].coefficient, p.terms[0].exponent)))) {
-
-            if ((p.terms[1].coefficient < 0 && p.terms[0].exponent % 2 == 0) || p.terms[0].exponent % 2 != 0) {
-
-                powerDiffFactoring(p);
-
-                if (check_coefficient == 1) complexp(p);
-
-                free(p.terms);
-
-                printf(";\n\n");
-                return;
-            }
-        }
-
-        if (p.terms[0].exponent % 2 == 0 && p.num_of_terms < 5 && p.terms[1].exponent != 3) {
-
-            bhaskara(p);
-
-            free(p.terms);
-
-            printf(";\n\n");
-            return;
-        }
-
-        if (check_coefficient != 1) briot_ruffini(p);
-
-        if (check_coefficient == 1){
-
-            complexp(p);
-            printf(";\n\n");
-        }
-
-        free(p.terms);
-
-        return;
-    }
-
+    printFac(p);
     free(p.terms);
+    p.terms = NULL;
 }
