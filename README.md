@@ -1,4 +1,4 @@
-# 🧮 Polynomialsz: Um algoritmo em C de fatoração polinomial ![Linguagem](https://img.shields.io/badge/C-99-blue) ![Versão](https://img.shields.io/badge/versão-1.0.0-blue) 
+# 🧮 Polynomialsz: Um algoritmo em C de fatoração polinomial ![Linguagem](https://img.shields.io/badge/C-99-blue) ![Versão](https://img.shields.io/badge/versão-1.1.0-blue) 
 ---
 
 ## ✍🏽 Descrição
@@ -10,13 +10,10 @@
 
 ## ✔️ Recursos
 > O algoritmo tem suporte para a análise e fatoração de polinômios através de diversas técnicas, são elas 💁🏼:
->- Critério de Eisenstein
->- Briot-Ruffini (divisão sintética)
->- Método de Bhaskara (fórmula quadrática)
->- Fatoração por diferença de potências
->- Análise de raízes complexas
-
-#### ⚠️ Observação: *Este algoritmo ainda apresenta incapacidade em fatorar alguns polinômios. Isso ocorre, na maioria das vezes, com polinômios com graus muito elevados ou com raízes complexas... Complexas.*
+>- Método de Aberth-Ehrlich;
+>- Briot-Ruffini (divisão sintética);
+>- Método de Bhaskara (fórmula quadrática);
+>- Método de fatoração de polinômios ciclotõmicos.
 
 ---
 
@@ -38,14 +35,14 @@ git clone https://github.com/Zaqu1h/polynomialsz.git
 
 > Algoritmo/
 >
->├── v1.0.0 PTBR/   → Código e arquivo de cabeçalho com comentários em português
+>├── v1.1.0 PTBR/   → Código e arquivo de cabeçalho com comentários em português
 > 
->└── v1.0.0/        → Code and header file with english comments
+>└── v1.1.0/        → Code and header file with english comments
 >
 
 Selecione a pasta da versão e o idioma que quiser.
 ```bash
-cd polynomialsz/Algoritmo/v1.0.0 PTBR
+cd polynomialsz/Algoritmo/v1.1.0 PTBR
 ```
 ### ⚙️ Passo 3: Compile o programa
 
@@ -91,9 +88,9 @@ O polinômio criado em questão foi: x² + 4 (ou x² + 0x + 4). O resultado apre
 
 > docs/
 >
-> ├── v1.0.0 PTBR/   → Documentação em Português
+> ├── v1.1.0 PTBR/   → Documentação em Português
 > 
-> └── v1.0.0/        → English Documentation
+> └── v1.1.0/        → English Documentation
 
 As documentações foram feitas usando Doxygen. Você pode procurar por arquivos chamados "refman.rtf" ou "index.html".
 
@@ -102,9 +99,9 @@ As documentações foram feitas usando Doxygen. Você pode procurar por arquivos
 ## 📋 Planos | To-do List
 
 > - Desenvolver e aplicar materiais e metodologia para que o projeto possa se tornar um bom apoio para aprendizado;
-> - Melhorar o algoritmo para suporte a outros tipos de raízes complexas, além de alterar suas representações, se necessário;
-> - Melhorar as condicionais do algoritmo para um desempenho mais satisfatório e uma leitura menos cansativa;
-> - Adicionar mais métodos e critérios, se necessário, como Cardano ou Ferrari.
+> - ✅ Melhorar o algoritmo para suporte a outros tipos de raízes complexas, além de alterar suas representações, se necessário;
+> - ✅ Melhorar as condicionais do algoritmo para um desempenho mais satisfatório e uma leitura menos cansativa;
+> - ✅ Adicionar mais métodos e critérios, se necessário, como Cardano ou Ferrari.
 
 ---
 
