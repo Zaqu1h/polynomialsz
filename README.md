@@ -13,7 +13,7 @@
 >- Método de Aberth-Ehrlich;
 >- Briot-Ruffini (divisão sintética);
 >- Método de Bhaskara (fórmula quadrática);
->- Método de fatoração de polinômios ciclotõmicos.
+>- Método de fatoração de polinômios ciclotômicos.
 
 ---
 
