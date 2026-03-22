@@ -30,18 +30,6 @@ int divider = 0;
 #include <math.h>
 #include <complex.h>
 
-typedef struct sterm {
-
-    int coefficient;
-    int exponent;
-} term;
-
-typedef struct spolynomial {
-
-    term *terms;
-    int numTerms;
-} polynomial;
-
 int gcd(int a, int b);
 int indOfRoot(int rad, double rt);
 
@@ -606,7 +594,6 @@ void removeZeros(polynomial *p) {
 void fac(polynomial p) {
 
     int qtZeros = 0;
-    int irrdcble = 0;
     int maxNum = 0;
     int maxExp = 0;
     int binary = 1;
