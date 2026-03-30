@@ -13,7 +13,7 @@
  * The algorithm works with polynomials with integer coefficients.
  *
  * @author Isaque Passos
- * @version 1.1.0
+ * @version 1.1.1
  * @date 2026
  *
  * @note Version 1.0.0: Initial implementation.
