@@ -483,8 +483,6 @@ void briotRuffini(polynomial p, int maxNum){
 
                 if (p.terms[0].exponent == 2 && p.numTerms == 3) {
 
-                    if (degreeX > 0) printf("%c^%d", var, degreeX);
-
                     if (zeroAux != 1.5 && zeroAux != 0) {
 
                         printf("(%c %c %d)", var, (zeroAux > 0) ? '-' : '+', (int)fabs(zeroAux));
@@ -502,8 +500,6 @@ void briotRuffini(polynomial p, int maxNum){
                     quad.terms[0] = setTerms(p.terms[0].coefficient, 4);
                     quad.terms[1] = setTerms(p.terms[1].coefficient, 2);
                     quad.terms[2] = setTerms(p.terms[2].coefficient, 0);
-
-                    if (degreeX > 0) printf("%c^%d", var, degreeX);
 
                     if (zeroAux != 1.5 && zeroAux != 0) {
 
