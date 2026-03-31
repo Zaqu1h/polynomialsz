@@ -1,4 +1,4 @@
-# 🧮 Polynomialsz: Um algoritmo em C de fatoração polinomial ![Linguagem](https://img.shields.io/badge/C-99-blue) ![Versão](https://img.shields.io/badge/versão-1.1.0-blue) 
+# 🧮 Polynomialsz: Um algoritmo em C de fatoração polinomial ![Linguagem](https://img.shields.io/badge/C-99-blue) ![Versão](https://img.shields.io/badge/versão-1.1.1-blue) 
 ---
 
 ## ✍🏽 Descrição
@@ -35,14 +35,14 @@ git clone https://github.com/Zaqu1h/polynomialsz.git
 
 > Algoritmo/
 >
->├── v1.1.0 PTBR/   → Código e arquivo de cabeçalho com comentários em português
+>├── v1.1.1 PTBR/   → Código e arquivo de cabeçalho com comentários em português
 > 
->└── v1.1.0/        → Code and header file with english comments
+>└── v1.1.1/        → Code and header file with english comments
 >
 
 Selecione a pasta da versão e o idioma que quiser.
 ```bash
-cd polynomialsz/Algoritmo/v1.1.0 PTBR
+cd polynomialsz/Algoritmo/v1.1.1 PTBR
 ```
 ### ⚙️ Passo 3: Compile o programa
 
@@ -54,14 +54,12 @@ gcc -o polynomialsz polynomialsz.c -lm
 ```bash
 ./polynomialsz
 ```
-### 🧪 Passo 4: Execute os testes
-Se você deseja rodar os testes, eles estão disponíveis dentro da pasta Algoritmo/. Para compilar e rodar os testes, use o comando:
+### 🧪 Passo 4: Veja os exemplos
+Se você deseja rodar os testes, eles estão disponíveis dentro da pasta Algoritmo/. Para compilar e rodar os exemplos, use o comando:
 ```bash
-gcc -o teste1 polynomialsz.c teste1.c -lm
-./teste1
+gcc -o exemplo polynomialsz.c exemplo.c -lm
+./exemplo
 ```
-#### Observação: *Há um arquivo teste2.c também!... Embora só tenha dois polinômios sendo testados nele...*
-
 ### ⌨️ Passo 5: Comece a digitar!
 A utilização do código é mais fácil do que parece:
 ```bash
@@ -84,24 +82,11 @@ O polinômio criado em questão foi: x² + 4 (ou x² + 0x + 4). O resultado apre
 
 ---
 
-## 📰 Documentações
-
-> docs/
->
-> ├── v1.1.0 PTBR/   → Documentação em Português
-> 
-> └── v1.1.0/        → English Documentation
-
-As documentações foram feitas usando Doxygen. Você pode procurar por arquivos chamados "refman.rtf" ou "index.html".
-
----
-
 ## 📋 Planos | To-do List
 
-> - Desenvolver e aplicar materiais e metodologia para que o projeto possa se tornar um bom apoio para aprendizado;
-> - ✅ Melhorar o algoritmo para suporte a outros tipos de raízes complexas, além de alterar suas representações, se necessário;
-> - ✅ Melhorar as condicionais do algoritmo para um desempenho mais satisfatório e uma leitura menos cansativa;
-> - ✅ Adicionar mais métodos e critérios, se necessário, como Cardano ou Ferrari.
+> - (✅ Feito) Melhorar o algoritmo para suporte a outros tipos de raízes complexas, além de alterar suas representações, se necessário;
+> - (✅ Feito) Melhorar as condicionais do algoritmo para um desempenho mais satisfatório e uma leitura menos cansativa;
+> - (✅ Feito) Adicionar mais métodos e critérios, se necessário.
 
 ---
 
@@ -124,7 +109,7 @@ A maioria não contribuiu diretamente, mas foram responsáveis pela minha persis
 
 ---
 
-## 🦱 Autor
+## 👩🏻‍🦱 Autor
 
 Desenvolvido por Isaque Silva Passos Ribeiro - [@Zaqu1h](https://github.com/Zaqu1h) -, um estudante de Ciência da Computação na Universidade Estadual de Santa Cruz (UESC).
 
