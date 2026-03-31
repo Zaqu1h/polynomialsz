@@ -1,4 +1,4 @@
-# 🧮 Polynomialsz: Um algoritmo em C de fatoração polinomial ![Linguagem](https://img.shields.io/badge/C-99-blue) ![Versão](https://img.shields.io/badge/versão-1.1.1-blue) 
+# 🧮 Polynomialsz: Um algoritmo em C para aproximação e cálculo de raízes polinomiais ![Linguagem](https://img.shields.io/badge/C-99-blue) ![Versão](https://img.shields.io/badge/versão-1.1.1-blue) 
 ---
 
 ## ✍🏽 Descrição
