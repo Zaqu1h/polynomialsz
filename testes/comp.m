@@ -73,7 +73,7 @@ subplot(2,2,1);
 plot(x, y0_norm, 'b', 'LineWidth', 2); hold on;
 plot(x, real(y3_norm), 'r--', 'LineWidth', 2);
 legend('Polinômio', 'Fatoração', 'Location', 'best');
-title('30 iterações, tol 5');
+title('30 iterações');
 xlabel('x'); ylabel('y'); grid on;
 
 subplot(2,2,2);
