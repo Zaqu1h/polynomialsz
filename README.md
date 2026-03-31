@@ -77,7 +77,7 @@ printFac(U);  < Mostra o polinômio fatorado (ou pelo menos eu espero que sim)
 ```
 O polinômio criado em questão foi: x² + 4 (ou x² + 0x + 4). O resultado apresentado, neste caso, será:
 ```bash
-(x - i2)(x + i2)
+1x^2 + 0x^1 + 4x^0 = (x - 2i)(x + 2i)
 ```
 
 ---
