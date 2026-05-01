@@ -633,7 +633,7 @@ void fac(polynomial p) {
 
         briotRuffini(p, maxNum);
     }
-    else if(maxCoefOne == 1 && sol == 0){
+    else if(maxCoefOne == 1 && p.terms[0].exponent % 2 == 0 && sol == 0){
 
         cyclotomicFac(p);
         sol = 1;
