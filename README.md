@@ -1,6 +1,10 @@
 # 🧮 Polynomialsz: Um algoritmo em C para aproximação e cálculo de raízes polinomiais ![Linguagem](https://img.shields.io/badge/C-99-blue) ![Versão](https://img.shields.io/badge/versão-1.1.1-blue) 
 ---
 
+# 🌐 Polynomialsz Web: https://zaqu1h.github.io/polynomialszWeb/
+
+---
+
 ## ✍🏽 Descrição
 >  Este projeto conta com funções para encontrar raízes e fatorar polinômios. O código é escrito em linguagem C e possui documentações e descrições tanto em inglês quanto em português.
 >  O projeto começou, originalmente, apenas como uma atividade complementar para a disciplina de Fundamentos Matemáticos para Ciência da Computação - FMCC -, em 2024. Todavia, após uma série
