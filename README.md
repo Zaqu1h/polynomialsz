@@ -1,7 +1,12 @@
 # 🧮 Polynomialsz: Um algoritmo em C para aproximação e cálculo de raízes polinomiais ![Linguagem](https://img.shields.io/badge/C-99-blue) ![Versão](https://img.shields.io/badge/versão-1.1.1-blue) 
 ---
 
-# 🌐 Polynomialsz Web: https://zaqu1h.github.io/polynomialszWeb/
+## 🌐 Polynomialsz Web: https://zaqu1h.github.io/polynomialszWeb/
+
+<div align="center">
+  
+  <img src="https://raw.githubusercontent.com/Zaqu1h/polynomialszWeb/main/Polynomialsz.gif" alt="Demonstração">
+</div>
 
 ---
 
