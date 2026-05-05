@@ -1,4 +1,4 @@
-# 🧮 Polynomialsz: Um algoritmo em C para aproximação e cálculo de raízes polinomiais ![Linguagem](https://img.shields.io/badge/C-99-blue) ![Versão](https://img.shields.io/badge/versão-1.1.1-blue) 
+# 🧮 Polynomialsz: Um algoritmo em C para aproximação e cálculo de raízes polinomiais ![Linguagem](https://img.shields.io/badge/C-99-blue) ![Versão](https://img.shields.io/badge/versão-1.1.2-blue) 
 ---
 
 ## 🌐 Polynomialsz Web: https://zaqu1h.github.io/polynomialszWeb/
@@ -44,14 +44,14 @@ git clone https://github.com/Zaqu1h/polynomialsz.git
 
 > Algoritmo/
 >
->├── v1.1.1 PTBR/   → Código e arquivo de cabeçalho com comentários em português
+>├── PTBR/   → Código e arquivo de cabeçalho com comentários em português
 > 
->└── v1.1.1/        → Code and header file with english comments
+>└── ENG/        → Code and header file with english comments
 >
 
 Selecione a pasta da versão e o idioma que quiser.
 ```bash
-cd polynomialsz/Algoritmo/v1.1.1 PTBR
+cd polynomialsz/Algoritmo/PTBR
 ```
 ### ⚙️ Passo 3: Compile o programa
 
@@ -73,14 +73,14 @@ gcc -o exemplo polynomialsz.c exemplo.c -lm
 A utilização do código é mais fácil do que parece:
 ```bash
 
-polynomial U = pCreate(3);  < Cria um polinômio com 3 termos
-
-U.terms[0] = setTerms(1, 2);
-U.terms[1] = setTerms(0, 1);
-U.terms[2] = setTerms(4, 0);
-
-printFac(U);  < Mostra o polinômio fatorado (ou pelo menos eu espero que sim)
-               e NÃO desaloca a memória dos termos, diferente da função pFree().
+  polynomial U = pCreate(3);  < Cria um polinômio com 3 termos
+  
+  U.terms[0] = setTerms(1, 2);
+  U.terms[1] = setTerms(0, 1);
+  U.terms[2] = setTerms(4, 0);
+  
+  printFac(U);  < Mostra o polinômio fatorado (ou pelo menos eu espero que sim)
+                 e NÃO desaloca a memória dos termos, diferente da função pFree().
 
   return 0;
 ```
